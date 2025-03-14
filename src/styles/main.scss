@@ -1,0 +1,19 @@
+@import "colors";
+@import "fonts";
+@import "vendor";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  background-color:white;
+}
+.app-sidenav-container {
+  height: 100vh; /* Ocupa toda la pantalla */
+}

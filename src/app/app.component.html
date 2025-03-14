@@ -1,0 +1,36 @@
+<mat-sidenav-container class="app-sidenav-container">
+  <!-- Spinner global -->
+  <div class="global-spinner-overlay" *ngIf="showSpinner">
+    <app-spinner></app-spinner>
+  </div>
+
+  <!-- Menu lateral -->
+  <mat-sidenav
+    #menu
+    [mode]="'side'"
+    [opened]="
+      (user$ | async)?.role?.trim()?.toUpperCase() === 'ADMIN' ||
+      (user$ | async)?.role?.trim()?.toUpperCase() === 'BACKOFFICE'
+    ">
+    <app-menu-list
+      (menuToggle)="menu.toggle()"
+      (signOut)="onSignOut()"
+      [isAuthorized]="(isAuthorized$ | async) || false"
+      [user]="user$ | async">
+    </app-menu-list>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <app-header
+      (menuToggle)="menu.toggle()"
+      [isAuthorized]="(isAuthorized$ | async) || false"
+      [user]="user$ | async"
+      (signOut)="onSignOut()">
+    </app-header>
+    
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,79 @@
+<div class="menu-container">
+  <!-- LOGO en la parte superior -->
+  <div class="menu-logo-container">
+    <img
+      src="assets/logovector-MIDAS.svg"
+      alt="Midas Solutions"
+      class="menu-logo"
+    />
+  </div>
+
+  <!-- Lista de navegación principal -->
+  <mat-nav-list>
+    <ng-container *ngIf="isAuthorized">
+      <!-- Si el usuario es ADMIN se muestran todas las rutas -->
+      <ng-container *ngIf="isAdmin(); else backofficeMenu">
+        <a mat-list-item (click)="closeMenu()" routerLink="/">
+          <mat-icon>home</mat-icon>
+          <span class="navegacion-list-label">Home</span>
+        </a>
+        <a mat-list-item (click)="closeMenu()" routerLink="auth/registrationindividual">
+          <mat-icon>how_to_register</mat-icon>
+          <span class="navegacion-list-label">Registro Individual</span>
+        </a>
+        <a mat-list-item (click)="closeMenu()" routerLink="auth/registration">
+          <mat-icon>how_to_register</mat-icon>
+          <span class="navegacion-list-label">Registrar Masivamente</span>
+        </a>
+        <a mat-list-item (click)="closeMenu()" routerLink="auth/listar">
+          <mat-icon>how_to_reg</mat-icon>
+          <span class="navegacion-list-label">Listar Usuarios</span>
+        </a>
+        <a
+          mat-list-item
+          (click)="closeMenu()"
+          routerLink="clienteresidencial/listar"
+        >
+          <mat-icon>group</mat-icon>
+          <span class="navegacion-list-label">Listar Clientes de Usuarios</span>
+        </a>
+      </ng-container>
+
+      <!-- Template para BACKOFFICE -->
+      <ng-template #backofficeMenu>
+        <ng-container *ngIf="isBackOffice()">
+          <a
+            mat-list-item
+            (click)="closeMenu()"
+            routerLink="clienteresidencial/listar"
+          >
+            <mat-icon>how_to_reg</mat-icon>
+            <span class="navegacion-list-label">Listar</span>
+          </a>
+        </ng-container>
+      </ng-template>
+    </ng-container>
+
+    <!-- Si no está autorizado se muestra la opción de login -->
+    <a
+      *ngIf="!isAuthorized"
+      mat-list-item
+      (click)="closeMenu()"
+      routerLink="auth/login"
+    >
+      <mat-icon>login</mat-icon>
+      <span class="navegacion-list-label">Inicio Sesion</span>
+    </a>
+  </mat-nav-list>
+
+  <!-- Botón para cerrar sesión, solo si está autorizado -->
+  <div class="logout-container" *ngIf="isAuthorized">
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="onSignOut(); closeMenu()"
+    >
+      Cerrar sesión
+    </button>
+  </div>
+</div>

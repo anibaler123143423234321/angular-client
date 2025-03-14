@@ -1,0 +1,376 @@
+<section class="users-container" fxLayout="column" fxLayoutAlign="start stretch">
+  <!-- Spinner Overlay: se muestra mientras loading sea true -->
+<!-- Modificar el div del spinner para que solo se muestre durante la exportación -->
+<div class="spinner-overlay" *ngIf="exportLoading">
+  <app-spinner></app-spinner>
+</div>
+
+ <!-- Header section -->
+ <div class="header-section" fxLayout="row" fxLayoutAlign="space-between center">
+  <h1 class="mat-h1" style="margin: 0">Lista de Usuarios</h1>
+  <div fxLayout="row" fxLayoutGap="1rem">
+    <!-- Botón Exportar Excel por Fecha -->
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="downloadExcelByDate()"
+      *ngIf="(user$ | async)?.role === 'ADMIN'"
+    >
+      <mat-icon>date_range</mat-icon>
+      Exportar Excel por Fecha
+    </button>
+    <!-- Botón Exportar Excel Masivo -->
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="downloadAllExcel()"
+      *ngIf="(user$ | async)?.role === 'ADMIN'"
+    >
+      <mat-icon>file_download</mat-icon>
+      Exportar Excel Masivo
+    </button>
+  </div>
+</div>
+
+  <!-- Search section -->
+  <form
+    class="search-section"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="1rem"
+    [formGroup]="filterForm"
+    (ngSubmit)="aplicarFiltros()"
+  >
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Buscar DNI</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        matInput
+        formControlName="dniAsesor"
+        placeholder="Ingrese DNI"
+        id="dniAsesor"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Buscar Nombre</mat-label>
+      <mat-icon matPrefix>person</mat-icon>
+      <input
+        matInput
+        formControlName="nombreAsesor"
+        placeholder="Ingrese nombre"
+        id="nombreAsesor"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Buscar Móvil</mat-label>
+      <mat-icon matPrefix>phone</mat-icon>
+      <input
+        matInput
+        formControlName="numeroMovil"
+        placeholder="Ingrese móvil"
+        id="numeroMovil"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Fecha</mat-label>
+      <input matInput type="date" formControlName="fecha" id="fecha" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Filtrar</button>
+    <button
+      mat-stroked-button
+      color="warn"
+      type="button"
+      (click)="limpiarFiltros()"
+    >
+      Limpiar
+    </button>
+  </form>
+
+  <!-- Table section -->
+  <div
+    class="table-container table-responsive"
+    *ngIf="clientesPage$ | async as pageData"
+  >
+    <table
+      mat-table
+      [dataSource]="pageData.clientes"
+      class="mat-elevation-z8"
+      style="width: 100%"
+    >
+      <ng-container matColumnDef="dni">
+        <th mat-header-cell *matHeaderCellDef>DNI</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.dni }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombres">
+        <th mat-header-cell *matHeaderCellDef>Nombre Asesor</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.nombres }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaIngresado">
+        <th mat-header-cell *matHeaderCellDef>Fecha Ingreso</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.fechaIngresado | date : "dd/MM/yyyy HH:mm" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="numeroMovil">
+        <th mat-header-cell *matHeaderCellDef>Número Móvil</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.numeroMovil }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="accion">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td
+          mat-cell
+          *matCellDef="let cliente"
+          fxLayout="row"
+          fxLayoutGap="0.675rem"
+        >
+          <!-- Botón para ver detalles -->
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="openDetails(cliente.numeroMovil)"
+          >
+            Ver detalles
+          </button>
+          <!-- Botón para exportación individual -->
+          <!-- Botón Excel en la tabla -->
+          <button
+          mat-stroked-button
+          color="accent"
+          (click)="downloadIndividualExcel(cliente.numeroMovil)"
+          *ngIf="(user$ | async)?.role === 'ADMIN' || (user$ | async)?.role === 'BACKOFFICE'"
+        >
+          <mat-icon>file_download</mat-icon>
+          Excel
+        </button>        
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="[
+          'dni',
+          'nombres',
+          'fechaIngresado',
+          'numeroMovil',
+          'accion'
+        ]"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="
+          let row;
+          columns: ['dni', 'nombres', 'fechaIngresado', 'numeroMovil', 'accion']
+        "
+      ></tr>
+    </table>
+  </div>
+
+  <ng-template #noData>
+    <div class="empty-state">
+      <mat-icon>folder_open</mat-icon>
+      <p>No hay clientes registrados</p>
+    </div>
+  </ng-template>
+
+  <!-- Pagination -->
+  <!-- Modifica la sección de paginación -->
+  <div class="pagination-controls" *ngIf="clientesPage$ | async as pageData">
+    <button
+      mat-stroked-button
+      [disabled]="pageData.currentPage === 0"
+      (click)="goToFirstPage()"
+      title="Ir a primera página"
+    >
+      <mat-icon>first_page</mat-icon>
+    </button>
+    <button
+      mat-stroked-button
+      [disabled]="pageData.currentPage === 0"
+      (click)="prevPage()"
+    >
+      <mat-icon>chevron_left</mat-icon> Anterior
+    </button>
+    <span class="mat-body-2"
+      >Página {{ pageData.currentPage + 1 }} de {{ pageData.totalPages }}</span
+    >
+    <button
+      mat-stroked-button
+      [disabled]="pageData.currentPage === pageData.totalPages - 1"
+      (click)="nextPage()"
+    >
+      Siguiente <mat-icon>chevron_right</mat-icon>
+    </button>
+    <button
+      mat-stroked-button
+      [disabled]="pageData.currentPage === pageData.totalPages - 1"
+      (click)="goToLastPage()"
+      title="Ir a última página"
+    >
+      <mat-icon>last_page</mat-icon>
+    </button>
+  </div>
+</section>
+
+<!-- Modal de Detalle -->
+<div class="modal-overlay" [class.show]="modalVisible" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>Detalles del Cliente</h3>
+      <span class="close" (click)="closeModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <ng-container
+        *ngIf="selectedCliente$ | async as clienteDetalle; else loading"
+      >
+        <div class="cliente-details">
+          <!-- Sección 1: Información Personal -->
+          <div class="detail-group">
+            <h4>Información Personal</h4>
+            <p><strong>ID:</strong> {{ clienteDetalle.id }}</p>
+            <p>
+              <strong>Nombres y Apellidos:</strong>
+              {{ clienteDetalle.nombresApellidos }}
+            </p>
+            <p><strong>NIF/NIE:</strong> {{ clienteDetalle.nifNie }}</p>
+            <p>
+              <strong>Nacionalidad:</strong> {{ clienteDetalle.nacionalidad }}
+            </p>
+            <p>
+              <strong>Fecha de Nacimiento:</strong>
+              {{ clienteDetalle.fechaNacimiento | date : "dd/MM/yyyy" }}
+            </p>
+          </div>
+
+          <!-- Sección 2: Contacto -->
+          <div class="detail-group">
+            <h4>Contacto</h4>
+            <p>
+              <strong>Correo Electrónico:</strong>
+              {{ clienteDetalle.correoElectronico }}
+            </p>
+            <p>
+              <strong>Móvil de Contacto:</strong>
+              {{ clienteDetalle.movilContacto }}
+            </p>
+            <p>
+              <strong>Fijo Compañía:</strong> {{ clienteDetalle.fijoCompania }}
+            </p>
+          </div>
+
+          <!-- Sección 3: Dirección -->
+          <div class="detail-group">
+            <h4>Dirección</h4>
+            <p><strong>Dirección:</strong> {{ clienteDetalle.direccion }}</p>
+            <p>
+              <strong>Código Postal:</strong> {{ clienteDetalle.codigoPostal }}
+            </p>
+            <p><strong>Provincia:</strong> {{ clienteDetalle.provincia }}</p>
+            <p><strong>Distrito:</strong> {{ clienteDetalle.distrito }}</p>
+          </div>
+
+          <!-- Sección 4: Plan y Servicios -->
+          <div class="detail-group">
+            <h4>Plan y Servicios</h4>
+            <p><strong>Plan Actual:</strong> {{ clienteDetalle.planActual }}</p>
+            <p><strong>Tipo de Plan:</strong> {{ clienteDetalle.tipoPlan }}</p>
+            <p>
+              <strong>Tipo de Fibra:</strong> {{ clienteDetalle.tipoFibra }}
+            </p>
+            <p><strong>ICC:</strong> {{ clienteDetalle.icc }}</p>
+            <p>
+              <strong>Móviles a Portar:</strong>
+              <span
+                *ngIf="
+                  clienteDetalle.movilesAPortar &&
+                    clienteDetalle.movilesAPortar.length > 0;
+                  else noMoviles
+                "
+              >
+                <span
+                  *ngFor="
+                    let movil of clienteDetalle.movilesAPortar;
+                    let i = index
+                  "
+                >
+                  {{ movil
+                  }}<span *ngIf="i < clienteDetalle.movilesAPortar.length - 1"
+                    >,
+                  </span>
+                </span>
+              </span>
+              <ng-template #noMoviles>No hay móviles a portar</ng-template>
+            </p>
+          </div>
+
+          <!-- Sección 5: Autorizaciones -->
+          <div class="detail-group">
+            <h4>Autorizaciones</h4>
+            <p>
+              <strong>Venta:</strong>
+              <span *ngIf="clienteDetalle.ventaRealizada == null"
+                >No definido</span
+              >
+              <span *ngIf="clienteDetalle.ventaRealizada != null">
+                {{ clienteDetalle.ventaRealizada ? "Sí" : "No" }}
+              </span>
+            </p>
+            <p>
+              <strong>Autoriza Seguros:</strong>
+              {{ clienteDetalle.autorizaSeguros ? "Sí" : "No" }}
+            </p>
+            <p>
+              <strong>Autoriza Energías:</strong>
+              {{ clienteDetalle.autorizaEnergias ? "Sí" : "No" }}
+            </p>
+          </div>
+
+          <!-- Sección 6: Información Adicional -->
+          <div class="detail-group">
+            <h4>Información Adicional</h4>
+            <p><strong>Campaña:</strong> {{ clienteDetalle.campania }}</p>
+            <p>
+              <strong>Cuenta Bancaria:</strong>
+              {{ clienteDetalle.cuentaBancaria }}
+            </p>
+            <p>
+              <strong>Permanencia:</strong> {{ clienteDetalle.permanencia }}
+            </p>
+            <p>
+              <strong>Asesor:</strong>
+              {{ clienteDetalle.usuario?.username }}
+            </p>
+            <p><strong>Nombre Asesor:</strong> {{ selectedAdvisorName }}</p>
+            <p>
+              <strong>Fecha de Creación:</strong>
+              {{ clienteDetalle.fechaCreacion | date : "dd/MM/yyyy HH:mm" }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Botones del modal (dentro del mismo bloque para tener acceso a clienteDetalle) -->
+        <div class="modal-footer">
+          <!-- Botón en el modal -->
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="downloadIndividualExcel(clienteDetalle.movilContacto)"
+            *ngIf="(user$ | async)?.role === 'ADMIN' || (user$ | async)?.role === 'BACKOFFICE'"
+            >
+            <mat-icon>file_download</mat-icon>
+            Exportar Excel Individual
+          </button>
+          <button mat-stroked-button color="warn" (click)="closeModal()">
+            Cerrar
+          </button>
+        </div>
+      </ng-container>
+      <ng-template #loading>
+        <p class="loading-text">Cargando detalles...</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

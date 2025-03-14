@@ -1,0 +1,3294 @@
+{
+  "CCAA": [
+    { "idCCAA": 1, "Nombre": "Andalucía" },
+    { "idCCAA": 2, "Nombre": "Aragón" },
+    { "idCCAA": 3, "Nombre": "Asturias, Principado de" },
+    { "idCCAA": 4, "Nombre": "Balears, Illes" },
+    { "idCCAA": 5, "Nombre": "Canarias" },
+    { "idCCAA": 6, "Nombre": "Cantabria" },
+    { "idCCAA": 7, "Nombre": "Castilla y León" },
+    { "idCCAA": 8, "Nombre": "Castilla - La Mancha" },
+    { "idCCAA": 9, "Nombre": "Catalunya" },
+    { "idCCAA": 10, "Nombre": "Comunitat Valenciana" },
+    { "idCCAA": 11, "Nombre": "Extremadura" },
+    { "idCCAA": 12, "Nombre": "Galicia" },
+    { "idCCAA": 13, "Nombre": "Madrid, Comunidad de" },
+    { "idCCAA": 14, "Nombre": "Murcia, Región de" },
+    { "idCCAA": 15, "Nombre": "Navarra, Comunidad Foral de" },
+    { "idCCAA": 16, "Nombre": "País Vasco" },
+    { "idCCAA": 17, "Nombre": "Rioja, La" },
+    { "idCCAA": 18, "Nombre": "Ceuta" },
+    { "idCCAA": 19, "Nombre": "Melilla" }
+  ],
+
+  "PROVINCIAS": [
+    { "idProvincia": 2, "idCCAA": 8, "Provincia": "Albacete" },
+    { "idProvincia": 3, "idCCAA": 10, "Provincia": "Alicante/Alacant" },
+    { "idProvincia": 4, "idCCAA": 1, "Provincia": "Almería" },
+    { "idProvincia": 1, "idCCAA": 16, "Provincia": "Araba/Álava" },
+    { "idProvincia": 33, "idCCAA": 3, "Provincia": "Asturias" },
+    { "idProvincia": 5, "idCCAA": 7, "Provincia": "Ávila" },
+    { "idProvincia": 6, "idCCAA": 11, "Provincia": "Badajoz" },
+    { "idProvincia": 7, "idCCAA": 4, "Provincia": "Balears, Illes" },
+    { "idProvincia": 8, "idCCAA": 9, "Provincia": "Barcelona" },
+    { "idProvincia": 48, "idCCAA": 16, "Provincia": "Bizkaia" },
+    { "idProvincia": 9, "idCCAA": 7, "Provincia": "Burgos" },
+    { "idProvincia": 10, "idCCAA": 11, "Provincia": "Cáceres" },
+    { "idProvincia": 11, "idCCAA": 1, "Provincia": "Cádiz" },
+    { "idProvincia": 39, "idCCAA": 6, "Provincia": "Cantabria" },
+    { "idProvincia": 12, "idCCAA": 10, "Provincia": "Castellón/Castelló" },
+    { "idProvincia": 51, "idCCAA": 18, "Provincia": "Ceuta" },
+    { "idProvincia": 13, "idCCAA": 8, "Provincia": "Ciudad Real" },
+    { "idProvincia": 14, "idCCAA": 1, "Provincia": "Córdoba" },
+    { "idProvincia": 15, "idCCAA": 12, "Provincia": "Coruña, A" },
+    { "idProvincia": 16, "idCCAA": 8, "Provincia": "Cuenca" },
+    { "idProvincia": 20, "idCCAA": 16, "Provincia": "Gipuzkoa" },
+    { "idProvincia": 17, "idCCAA": 9, "Provincia": "Girona" },
+    { "idProvincia": 18, "idCCAA": 1, "Provincia": "Granada" },
+    { "idProvincia": 19, "idCCAA": 8, "Provincia": "Guadalajara" },
+    { "idProvincia": 21, "idCCAA": 1, "Provincia": "Huelva" },
+    { "idProvincia": 22, "idCCAA": 2, "Provincia": "Huesca" },
+    { "idProvincia": 23, "idCCAA": 1, "Provincia": "Jaén" },
+    { "idProvincia": 24, "idCCAA": 7, "Provincia": "León" },
+    { "idProvincia": 27, "idCCAA": 12, "Provincia": "Lugo" },
+    { "idProvincia": 25, "idCCAA": 9, "Provincia": "Lleida" },
+    { "idProvincia": 28, "idCCAA": 13, "Provincia": "Madrid" },
+    { "idProvincia": 29, "idCCAA": 1, "Provincia": "Málaga" },
+    { "idProvincia": 52, "idCCAA": 19, "Provincia": "Melilla" },
+    { "idProvincia": 30, "idCCAA": 14, "Provincia": "Murcia" },
+    { "idProvincia": 31, "idCCAA": 15, "Provincia": "Navarra" },
+    { "idProvincia": 32, "idCCAA": 12, "Provincia": "Ourense" },
+    { "idProvincia": 34, "idCCAA": 7, "Provincia": "Palencia" },
+    { "idProvincia": 35, "idCCAA": 5, "Provincia": "Palmas, Las" },
+    { "idProvincia": 36, "idCCAA": 12, "Provincia": "Pontevedra" },
+    { "idProvincia": 26, "idCCAA": 17, "Provincia": "Rioja, La" },
+    { "idProvincia": 37, "idCCAA": 7, "Provincia": "Salamanca" },
+    { "idProvincia": 38, "idCCAA": 5, "Provincia": "Santa Cruz de Tenerife" },
+    { "idProvincia": 40, "idCCAA": 7, "Provincia": "Segovia" },
+    { "idProvincia": 41, "idCCAA": 1, "Provincia": "Sevilla" },
+    { "idProvincia": 42, "idCCAA": 7, "Provincia": "Soria" },
+    { "idProvincia": 43, "idCCAA": 9, "Provincia": "Tarragona" },
+    { "idProvincia": 44, "idCCAA": 2, "Provincia": "Teruel" },
+    { "idProvincia": 45, "idCCAA": 8, "Provincia": "Toledo" },
+    { "idProvincia": 46, "idCCAA": 10, "Provincia": "Valencia/València" },
+    { "idProvincia": 47, "idCCAA": 7, "Provincia": "Valladolid" },
+    { "idProvincia": 49, "idCCAA": 7, "Provincia": "Zamora" },
+    { "idProvincia": 50, "idCCAA": 2, "Provincia": "Zaragoza" }
+  ],
+
+  "MUNICIPIOS": [
+    {
+      "idProvincia": 1,
+      "codMunicipio": 1,
+      "DC": 4,
+      "Municipio": "Alegría-Dulantzi"
+    },
+    {
+      "idProvincia": 2,
+      "codMunicipio": 1,
+      "DC": 9,
+      "Municipio": "Abengibre"
+    },
+    {
+      "idProvincia": 3,
+      "codMunicipio": 1,
+      "DC": 5,
+      "Municipio": "Adsubia"
+    },
+    {
+      "idProvincia": 4,
+      "codMunicipio": 1,
+      "DC": 0,
+      "Municipio": "Abla"
+    },
+    {
+      "idProvincia": 5,
+      "codMunicipio": 1,
+      "DC": 3,
+      "Municipio": "Adanero"
+    },
+    {
+      "idProvincia": 6,
+      "codMunicipio": 1,
+      "DC": 6,
+      "Municipio": "Acedera"
+    },
+    {
+      "idProvincia": 7,
+      "codMunicipio": 1,
+      "DC": 2,
+      "Municipio": "Alaró"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 1,
+      "DC": 8,
+      "Municipio": "Abrera"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 1,
+      "DC": 1,
+      "Municipio": "Abajas"
+    },
+    {
+      "idProvincia": 10,
+      "codMunicipio": 1,
+      "DC": 5,
+      "Municipio": "Abadía"
+    },
+    {
+      "idProvincia": 11,
+      "codMunicipio": 1,
+      "DC": 2,
+      "Municipio": "Alcalá de los Gazules"
+    },
+    {
+      "idProvincia": 12,
+      "codMunicipio": 1,
+      "DC": 7,
+      "Municipio": "Atzeneta del Maestrat"
+    },
+    {
+      "idProvincia": 13,
+      "codMunicipio": 1,
+      "DC": 3,
+      "Municipio": "Abenójar"
+    },
+    {
+      "idProvincia": 14,
+      "codMunicipio": 1,
+      "DC": 8,
+      "Municipio": "Adamuz"
+    },
+    {
+      "idProvincia": 15,
+      "codMunicipio": 1,
+      "DC": 1,
+      "Municipio": "Abegondo"
+    },
+    {
+      "idProvincia": 16,
+      "codMunicipio": 1,
+      "DC": 4,
+      "Municipio": "Abia de la Obispalía"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 1,
+      "DC": 0,
+      "Municipio": "Agullana"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 1,
+      "DC": 6,
+      "Municipio": "Agrón"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 1,
+      "DC": 9,
+      "Municipio": "Abánades"
+    },
+    {
+      "idProvincia": 20,
+      "codMunicipio": 1,
+      "DC": 3,
+      "Municipio": "Abaltzisketa"
+    },
+    {
+      "idProvincia": 21,
+      "codMunicipio": 1,
+      "DC": 0,
+      "Municipio": "Alájar"
+    },
+    {
+      "idProvincia": 22,
+      "codMunicipio": 1,
+      "DC": 5,
+      "Municipio": "Abiego"
+    },
+    {
+      "idProvincia": 23,
+      "codMunicipio": 1,
+      "DC": 1,
+      "Municipio": "Albanchez de Mágina"
+    },
+    {
+      "idProvincia": 24,
+      "codMunicipio": 1,
+      "DC": 6,
+      "Municipio": "Acebedo"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 1,
+      "DC": 9,
+      "Municipio": "Abella de la Conca"
+    },
+    {
+      "idProvincia": 26,
+      "codMunicipio": 1,
+      "DC": 2,
+      "Municipio": "Ábalos"
+    },
+    {
+      "idProvincia": 27,
+      "codMunicipio": 1,
+      "DC": 8,
+      "Municipio": "Abadín"
+    },
+    {
+      "idProvincia": 28,
+      "codMunicipio": 1,
+      "DC": 4,
+      "Municipio": "Acebeda, La"
+    },
+    {
+      "idProvincia": 29,
+      "codMunicipio": 1,
+      "DC": 7,
+      "Municipio": "Alameda"
+    },
+    {
+      "idProvincia": 30,
+      "codMunicipio": 1,
+      "DC": 1,
+      "Municipio": "Abanilla"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 1,
+      "DC": 8,
+      "Municipio": "Abáigar"
+    },
+    {
+      "idProvincia": 32,
+      "codMunicipio": 1,
+      "DC": 3,
+      "Municipio": "Allariz"
+    },
+    {
+      "idProvincia": 33,
+      "codMunicipio": 1,
+      "DC": 9,
+      "Municipio": "Allande"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 1,
+      "DC": 4,
+      "Municipio": "Abarca de Campos"
+    },
+    {
+      "idProvincia": 35,
+      "codMunicipio": 1,
+      "DC": 7,
+      "Municipio": "Agaete"
+    },
+    {
+      "idProvincia": 36,
+      "codMunicipio": 1,
+      "DC": 0,
+      "Municipio": "Arbo"
+    },
+    {
+      "idProvincia": 37,
+      "codMunicipio": 1,
+      "DC": 6,
+      "Municipio": "Abusejo"
+    },
+    {
+      "idProvincia": 38,
+      "codMunicipio": 1,
+      "DC": 2,
+      "Municipio": "Adeje"
+    },
+    {
+      "idProvincia": 39,
+      "codMunicipio": 1,
+      "DC": 5,
+      "Municipio": "Alfoz de Lloredo"
+    },
+    {
+      "idProvincia": 40,
+      "codMunicipio": 1,
+      "DC": 9,
+      "Municipio": "Abades"
+    },
+    {
+      "idProvincia": 41,
+      "codMunicipio": 1,
+      "DC": 6,
+      "Municipio": "Aguadulce"
+    },
+    {
+      "idProvincia": 42,
+      "codMunicipio": 1,
+      "DC": 1,
+      "Municipio": "Abejar"
+    },
+    {
+      "idProvincia": 43,
+      "codMunicipio": 1,
+      "DC": 7,
+      "Municipio": "Aiguamúrcia"
+    },
+    {
+      "idProvincia": 44,
+      "codMunicipio": 1,
+      "DC": 2,
+      "Municipio": "Ababuj"
+    },
+    {
+      "idProvincia": 45,
+      "codMunicipio": 1,
+      "DC": 5,
+      "Municipio": "Ajofrín"
+    },
+    {
+      "idProvincia": 46,
+      "codMunicipio": 1,
+      "DC": 8,
+      "Municipio": "Ademuz"
+    },
+    {
+      "idProvincia": 47,
+      "codMunicipio": 1,
+      "DC": 4,
+      "Municipio": "Adalia"
+    },
+    {
+      "idProvincia": 48,
+      "codMunicipio": 1,
+      "DC": 0,
+      "Municipio": "Abadiño"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 1,
+      "DC": 6,
+      "Municipio": "Abanto"
+    },
+    {
+      "idProvincia": 51,
+      "codMunicipio": 1,
+      "DC": 3,
+      "Municipio": "Ceuta"
+    },
+    {
+      "idProvincia": 52,
+      "codMunicipio": 1,
+      "DC": 8,
+      "Municipio": "Melilla"
+    },
+    {
+      "idProvincia": 1,
+      "codMunicipio": 2,
+      "DC": 9,
+      "Municipio": "Amurrio"
+    },
+    {
+      "idProvincia": 2,
+      "codMunicipio": 2,
+      "DC": 4,
+      "Municipio": "Alatoz"
+    },
+    {
+      "idProvincia": 3,
+      "codMunicipio": 2,
+      "DC": 0,
+      "Municipio": "Agost"
+    },
+    {
+      "idProvincia": 4,
+      "codMunicipio": 2,
+      "DC": 5,
+      "Municipio": "Abrucena"
+    },
+    {
+      "idProvincia": 5,
+      "codMunicipio": 2,
+      "DC": 8,
+      "Municipio": "Adrada, La"
+    },
+    {
+      "idProvincia": 6,
+      "codMunicipio": 2,
+      "DC": 1,
+      "Municipio": "Aceuchal"
+    },
+    {
+      "idProvincia": 7,
+      "codMunicipio": 2,
+      "DC": 7,
+      "Municipio": "Alaior"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 2,
+      "DC": 3,
+      "Municipio": "Aguilar de Segarra"
+    },
+    {
+      "idProvincia": 10,
+      "codMunicipio": 2,
+      "DC": 0,
+      "Municipio": "Abertura"
+    },
+    {
+      "idProvincia": 11,
+      "codMunicipio": 2,
+      "DC": 7,
+      "Municipio": "Alcalá del Valle"
+    },
+    {
+      "idProvincia": 12,
+      "codMunicipio": 2,
+      "DC": 2,
+      "Municipio": "Aín"
+    },
+    {
+      "idProvincia": 49,
+      "codMunicipio": 268,
+      "DC": 2,
+      "Municipio": "Villarrín de Campos"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 268,
+      "DC": 5,
+      "Municipio": "Undués de Lerda"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 269,
+      "DC": 0,
+      "Municipio": "Seva"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 269,
+      "DC": 3,
+      "Municipio": "Quintanilla del Coco"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 269,
+      "DC": 8,
+      "Municipio": "Urrea de Jalón"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 270,
+      "DC": 4,
+      "Municipio": "Sitges"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 270,
+      "DC": 2,
+      "Municipio": "Urriés"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 271,
+      "DC": 1,
+      "Municipio": "Sobremunt"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 271,
+      "DC": 9,
+      "Municipio": "Used"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 272,
+      "DC": 6,
+      "Municipio": "Sora"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 272,
+      "DC": 4,
+      "Municipio": "Utebo"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 273,
+      "DC": 2,
+      "Municipio": "Subirats"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 273,
+      "DC": 0,
+      "Municipio": "Valdehorna"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 274,
+      "DC": 7,
+      "Municipio": "Súria"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 274,
+      "DC": 5,
+      "Municipio": "Val de San Martín"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 275,
+      "DC": 0,
+      "Municipio": "Tavèrnoles"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 276,
+      "DC": 3,
+      "Municipio": "Tagamanent"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 277,
+      "DC": 9,
+      "Municipio": "Talamanca"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 278,
+      "DC": 5,
+      "Municipio": "Taradell"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 279,
+      "DC": 8,
+      "Municipio": "Terrassa"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 280,
+      "DC": 2,
+      "Municipio": "Tavertet"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 281,
+      "DC": 9,
+      "Municipio": "Teià"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 282,
+      "DC": 4,
+      "Municipio": "Tiana"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 283,
+      "DC": 0,
+      "Municipio": "Tona"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 284,
+      "DC": 5,
+      "Municipio": "Tordera"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 285,
+      "DC": 8,
+      "Municipio": "Torelló"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 286,
+      "DC": 1,
+      "Municipio": "Torre de Claramunt, La"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 287,
+      "DC": 7,
+      "Municipio": "Torrelavit"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 288,
+      "DC": 3,
+      "Municipio": "Torrelles de Foix"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 289,
+      "DC": 6,
+      "Municipio": "Torrelles de Llobregat"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 290,
+      "DC": 0,
+      "Municipio": "Ullastrell"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 291,
+      "DC": 7,
+      "Municipio": "Vacarisses"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 292,
+      "DC": 2,
+      "Municipio": "Vallbona d'Anoia"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 293,
+      "DC": 8,
+      "Municipio": "Vallcebre"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 294,
+      "DC": 3,
+      "Municipio": "Vallgorguina"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 295,
+      "DC": 6,
+      "Municipio": "Vallirana"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 296,
+      "DC": 9,
+      "Municipio": "Vallromanes"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 297,
+      "DC": 5,
+      "Municipio": "Veciana"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 298,
+      "DC": 1,
+      "Municipio": "Vic"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 299,
+      "DC": 4,
+      "Municipio": "Vilada"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 300,
+      "DC": 8,
+      "Municipio": "Viladecavalls"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 301,
+      "DC": 5,
+      "Municipio": "Viladecans"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 302,
+      "DC": 0,
+      "Municipio": "Vilanova del Camí"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 303,
+      "DC": 6,
+      "Municipio": "Vilanova de Sau"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 304,
+      "DC": 1,
+      "Municipio": "Vilobí del Penedès"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 305,
+      "DC": 4,
+      "Municipio": "Vilafranca del Penedès"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 306,
+      "DC": 7,
+      "Municipio": "Vilalba Sasserra"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 307,
+      "DC": 3,
+      "Municipio": "Vilanova i la Geltrú"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 308,
+      "DC": 9,
+      "Municipio": "Viver i Serrateix"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 309,
+      "DC": 5,
+      "Municipio": "Kortezubi"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 309,
+      "DC": 8,
+      "Municipio": "Reinoso"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 309,
+      "DC": 1,
+      "Municipio": "Urries"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 310,
+      "DC": 2,
+      "Municipio": "Folgueroles"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 310,
+      "DC": 4,
+      "Municipio": "Rezmondo"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 310,
+      "DC": 7,
+      "Municipio": "Used"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 311,
+      "DC": 1,
+      "Municipio": "Gisclareny"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 311,
+      "DC": 0,
+      "Municipio": "Riocavado de la Sierra"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 311,
+      "DC": 2,
+      "Municipio": "Utebo"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 312,
+      "DC": 6,
+      "Municipio": "Granera"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 312,
+      "DC": 5,
+      "Municipio": "Roa"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 312,
+      "DC": 8,
+      "Municipio": "Valdehorna"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 313,
+      "DC": 3,
+      "Municipio": "Granollers"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 313,
+      "DC": 1,
+      "Municipio": "Royuela de Río Franco"
+    },
+    {
+      "idProvincia": 50,
+      "codMunicipio": 313,
+      "DC": 0,
+      "Municipio": "Val de San Martín"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 314,
+      "DC": 7,
+      "Municipio": "Gurb"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 315,
+      "DC": 2,
+      "Municipio": "Santa Eulàlia de Riuprimer"
+    },
+    {
+      "idProvincia": 8,
+      "codMunicipio": 316,
+      "DC": 7,
+      "Municipio": "Santa Eulàlia de Ronçana"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 314,
+      "DC": 2,
+      "Municipio": "Revilla del Campo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 315,
+      "DC": 5,
+      "Municipio": "Revillarruz"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 316,
+      "DC": 8,
+      "Municipio": "Revilla Vallejera"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 317,
+      "DC": 4,
+      "Municipio": "Rezmondo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 318,
+      "DC": 0,
+      "Municipio": "Riocavado de la Sierra"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 319,
+      "DC": 3,
+      "Municipio": "Rojas"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 320,
+      "DC": 9,
+      "Municipio": "Royuela de Río Franco"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 321,
+      "DC": 4,
+      "Municipio": "Rubena"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 322,
+      "DC": 0,
+      "Municipio": "Rublacedo de Abajo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 323,
+      "DC": 5,
+      "Municipio": "Rucandio"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 324,
+      "DC": 1,
+      "Municipio": "Salas de los Infantes"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 325,
+      "DC": 6,
+      "Municipio": "Saldaña de Burgos"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 326,
+      "DC": 1,
+      "Municipio": "Salinillas de Bureba"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 327,
+      "DC": 7,
+      "Municipio": "San Adrián de Juarros"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 328,
+      "DC": 3,
+      "Municipio": "San Juan del Monte"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 329,
+      "DC": 6,
+      "Municipio": "San Mamés de Burgos"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 330,
+      "DC": 1,
+      "Municipio": "San Millán de Lara"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 331,
+      "DC": 8,
+      "Municipio": "Santa Cecilia"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 332,
+      "DC": 3,
+      "Municipio": "Santa Cruz de la Salceda"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 333,
+      "DC": 9,
+      "Municipio": "Santa Gadea del Cid"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 334,
+      "DC": 4,
+      "Municipio": "Santa Inés"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 335,
+      "DC": 1,
+      "Municipio": "Santibáñez de Esgueva"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 336,
+      "DC": 7,
+      "Municipio": "Santibáñez del Val"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 337,
+      "DC": 2,
+      "Municipio": "Santo Domingo de Silos"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 338,
+      "DC": 8,
+      "Municipio": "San Vicente del Valle"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 339,
+      "DC": 1,
+      "Municipio": "Sargentes de la Lora"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 340,
+      "DC": 7,
+      "Municipio": "Sarracín"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 341,
+      "DC": 3,
+      "Municipio": "Sasamón"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 342,
+      "DC": 9,
+      "Municipio": "Sequera de Haza, La"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 343,
+      "DC": 5,
+      "Municipio": "Solarana"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 344,
+      "DC": 0,
+      "Municipio": "Sordillos"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 345,
+      "DC": 6,
+      "Municipio": "Sotillo de la Ribera"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 346,
+      "DC": 2,
+      "Municipio": "Susinos del Páramo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 347,
+      "DC": 8,
+      "Municipio": "Tamarón"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 348,
+      "DC": 4,
+      "Municipio": "Tardajos"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 349,
+      "DC": 7,
+      "Municipio": "Tejada"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 350,
+      "DC": 0,
+      "Municipio": "Terradillos de Esgueva"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 351,
+      "DC": 6,
+      "Municipio": "Tinieblas de la Sierra"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 352,
+      "DC": 1,
+      "Municipio": "Tobar"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 353,
+      "DC": 7,
+      "Municipio": "Tordómar"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 354,
+      "DC": 3,
+      "Municipio": "Torrecilla del Monte"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 355,
+      "DC": 9,
+      "Municipio": "Torregalindo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 356,
+      "DC": 5,
+      "Municipio": "Torrelara"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 357,
+      "DC": 0,
+      "Municipio": "Torrepadre"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 358,
+      "DC": 6,
+      "Municipio": "Torresandino"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 359,
+      "DC": 9,
+      "Municipio": "Tórtoles de Esgueva"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 360,
+      "DC": 2,
+      "Municipio": "Tosantos"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 361,
+      "DC": 8,
+      "Municipio": "Trespaderne"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 362,
+      "DC": 3,
+      "Municipio": "Tubilla del Agua"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 363,
+      "DC": 9,
+      "Municipio": "Tubilla del Lago"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 364,
+      "DC": 4,
+      "Municipio": "Úrbel del Castillo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 365,
+      "DC": 0,
+      "Municipio": "Vadocondes"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 366,
+      "DC": 7,
+      "Municipio": "Valdeande"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 367,
+      "DC": 2,
+      "Municipio": "Valdezate"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 368,
+      "DC": 8,
+      "Municipio": "Valdorros"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 369,
+      "DC": 3,
+      "Municipio": "Vallarta de Bureba"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 370,
+      "DC": 9,
+      "Municipio": "Valle de las Navas"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 371,
+      "DC": 4,
+      "Municipio": "Valle de Losa"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 372,
+      "DC": 0,
+      "Municipio": "Valle de Manzanedo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 373,
+      "DC": 6,
+      "Municipio": "Valle de Mena"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 374,
+      "DC": 1,
+      "Municipio": "Valle de Oca"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 375,
+      "DC": 7,
+      "Municipio": "Valle de Santibáñez"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 376,
+      "DC": 3,
+      "Municipio": "Valle de Sedano"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 377,
+      "DC": 9,
+      "Municipio": "Valle de Tobalina"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 378,
+      "DC": 4,
+      "Municipio": "Valle de Valdelaguna"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 379,
+      "DC": 0,
+      "Municipio": "Valle de Valdelucio"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 380,
+      "DC": 6,
+      "Municipio": "Valle de Zamanzas"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 381,
+      "DC": 1,
+      "Municipio": "Vallejera"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 382,
+      "DC": 7,
+      "Municipio": "Valles de Palenzuela"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 383,
+      "DC": 3,
+      "Municipio": "Valluércanes"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 384,
+      "DC": 9,
+      "Municipio": "Vid de Bureba, La"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 385,
+      "DC": 4,
+      "Municipio": "Vid y Barrios, La"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 386,
+      "DC": 0,
+      "Municipio": "Vileña"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 387,
+      "DC": 6,
+      "Municipio": "Villadiego"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 388,
+      "DC": 1,
+      "Municipio": "Villaescusa de Roa"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 389,
+      "DC": 7,
+      "Municipio": "Villaescusa la Sombría"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 390,
+      "DC": 2,
+      "Municipio": "Villaespasa"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 391,
+      "DC": 8,
+      "Municipio": "Villafranca Montes de Oca"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 392,
+      "DC": 3,
+      "Municipio": "Villafruela"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 393,
+      "DC": 9,
+      "Municipio": "Villagalijo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 394,
+      "DC": 4,
+      "Municipio": "Villagonzalo Pedernales"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 395,
+      "DC": 0,
+      "Municipio": "Villahoz"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 396,
+      "DC": 3,
+      "Municipio": "Villalba de Duero"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 397,
+      "DC": 9,
+      "Municipio": "Villalbilla de Burgos"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 398,
+      "DC": 5,
+      "Municipio": "Villalbilla de Gumiel"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 399,
+      "DC": 0,
+      "Municipio": "Villaldemiro"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 400,
+      "DC": 6,
+      "Municipio": "Villalmanzo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 401,
+      "DC": 1,
+      "Municipio": "Villamayor de los Montes"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 402,
+      "DC": 7,
+      "Municipio": "Villamayor de Treviño"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 403,
+      "DC": 3,
+      "Municipio": "Villambistia"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 404,
+      "DC": 8,
+      "Municipio": "Villamedianilla"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 405,
+      "DC": 4,
+      "Municipio": "Villamiel de la Sierra"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 406,
+      "DC": 7,
+      "Municipio": "Villangómez"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 407,
+      "DC": 3,
+      "Municipio": "Villanueva de Argaño"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 408,
+      "DC": 9,
+      "Municipio": "Villanueva de Carazo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 409,
+      "DC": 4,
+      "Municipio": "Villanueva de Gumiel"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 410,
+      "DC": 0,
+      "Municipio": "Villanueva de Teba"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 411,
+      "DC": 6,
+      "Municipio": "Villaquirán de la Puebla"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 412,
+      "DC": 2,
+      "Municipio": "Villaquirán de los Infantes"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 413,
+      "DC": 8,
+      "Municipio": "Villariezo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 414,
+      "DC": 3,
+      "Municipio": "Villasandino"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 415,
+      "DC": 9,
+      "Municipio": "Villasur de Herreros"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 416,
+      "DC": 4,
+      "Municipio": "Villatuelda"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 417,
+      "DC": 0,
+      "Municipio": "Villaverde del Monte"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 418,
+      "DC": 6,
+      "Municipio": "Villaverde-Mogina"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 419,
+      "DC": 1,
+      "Municipio": "Villayerno Morquillas"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 420,
+      "DC": 7,
+      "Municipio": "Villazopeque"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 421,
+      "DC": 2,
+      "Municipio": "Villegas"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 422,
+      "DC": 8,
+      "Municipio": "Villoruebo"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 423,
+      "DC": 3,
+      "Municipio": "Vizcaínos"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 424,
+      "DC": 9,
+      "Municipio": "Zael"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 425,
+      "DC": 5,
+      "Municipio": "Zarzosa de Río Pisuerga"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 426,
+      "DC": 1,
+      "Municipio": "Zazuar"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 427,
+      "DC": 7,
+      "Municipio": "Zuñeda"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 901,
+      "DC": 2,
+      "Municipio": "Alfoz de Quintanadueñas"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 902,
+      "DC": 7,
+      "Municipio": "Valle de Santibáñez"
+    },
+    {
+      "idProvincia": 9,
+      "codMunicipio": 903,
+      "DC": 3,
+      "Municipio": "Valle de Sedano"
+    },
+    {
+      "idProvincia": 16,
+      "codMunicipio": 901,
+      "DC": 5,
+      "Municipio": "Pozorrubielos de la Mancha"
+    },
+    {
+      "idProvincia": 16,
+      "codMunicipio": 902,
+      "DC": 0,
+      "Municipio": "Valdetórtola"
+    },
+    {
+      "idProvincia": 16,
+      "codMunicipio": 903,
+      "DC": 6,
+      "Municipio": "Valeras, Las"
+    },
+    {
+      "idProvincia": 16,
+      "codMunicipio": 904,
+      "DC": 1,
+      "Municipio": "Arcas del Villar"
+    },
+    {
+      "idProvincia": 16,
+      "codMunicipio": 905,
+      "DC": 4,
+      "Municipio": "Fuentenava de Jábaga"
+    },
+    {
+      "idProvincia": 16,
+      "codMunicipio": 906,
+      "DC": 7,
+      "Municipio": "Valdecolmenas, Los"
+    },
+    {
+      "idProvincia": 16,
+      "codMunicipio": 907,
+      "DC": 2,
+      "Municipio": "Sotorribas"
+    },
+    {
+      "idProvincia": 16,
+      "codMunicipio": 908,
+      "DC": 9,
+      "Municipio": "Villar y Velasco"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 901,
+      "DC": 2,
+      "Municipio": "Sant Julià del Llor i Bonmatí"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 902,
+      "DC": 6,
+      "Municipio": "Forallac"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 903,
+      "DC": 1,
+      "Municipio": "Cruïlles, Monells i Sant Sadurní de l'Heura"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 904,
+      "DC": 7,
+      "Municipio": "Vall d'en Bas, La"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 905,
+      "DC": 3,
+      "Municipio": "Vilablareix"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 906,
+      "DC": 8,
+      "Municipio": "Fornells de la Selva"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 907,
+      "DC": 4,
+      "Municipio": "Biure"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 908,
+      "DC": 9,
+      "Municipio": "Cellera de Ter, La"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 909,
+      "DC": 5,
+      "Municipio": "Guíxols, Els"
+    },
+    {
+      "idProvincia": 17,
+      "codMunicipio": 910,
+      "DC": 0,
+      "Municipio": "Pasteral, El"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 901,
+      "DC": 7,
+      "Municipio": "Nevada"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 902,
+      "DC": 2,
+      "Municipio": "Valle, El"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 903,
+      "DC": 8,
+      "Municipio": "Alpujarra de la Sierra"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 904,
+      "DC": 3,
+      "Municipio": "Guajares, Los"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 905,
+      "DC": 6,
+      "Municipio": "Gabias, Las"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 906,
+      "DC": 1,
+      "Municipio": "Valle del Zalabí"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 907,
+      "DC": 5,
+      "Municipio": "Villamena"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 908,
+      "DC": 0,
+      "Municipio": "Pinar, El"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 909,
+      "DC": 4,
+      "Municipio": "Morelábor"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 910,
+      "DC": 8,
+      "Municipio": "Albondón"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 911,
+      "DC": 5,
+      "Municipio": "Vegas del Genil"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 912,
+      "DC": 0,
+      "Municipio": "Cuevas del Campo"
+    },
+    {
+      "idProvincia": 18,
+      "codMunicipio": 913,
+      "DC": 6,
+      "Municipio": "Zagra"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 901,
+      "DC": 0,
+      "Municipio": "Semillas"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 902,
+      "DC": 5,
+      "Municipio": "Arroyo de las Fraguas"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 903,
+      "DC": 1,
+      "Municipio": "Canredondo"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 904,
+      "DC": 6,
+      "Municipio": "Fuencemillán"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 905,
+      "DC": 2,
+      "Municipio": "Henche"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 906,
+      "DC": 7,
+      "Municipio": "Huérmeces del Cerro"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 907,
+      "DC": 3,
+      "Municipio": "Malaguilla"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 908,
+      "DC": 9,
+      "Municipio": "Huerce, La"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 909,
+      "DC": 4,
+      "Municipio": "Mierla, La"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 910,
+      "DC": 8,
+      "Municipio": "Chillarón del Rey"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 911,
+      "DC": 3,
+      "Municipio": "Durón"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 912,
+      "DC": 9,
+      "Municipio": "Ledanca"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 913,
+      "DC": 5,
+      "Municipio": "Miralrío"
+    },
+    {
+      "idProvincia": 19,
+      "codMunicipio": 914,
+      "DC": 0,
+      "Municipio": "Corduente"
+    },
+    {
+      "idProvincia": 20,
+      "codMunicipio": 901,
+      "DC": 2,
+      "Municipio": "Altzaga"
+    },
+    {
+      "idProvincia": 20,
+      "codMunicipio": 902,
+      "DC": 7,
+      "Municipio": "Orendain"
+    },
+    {
+      "idProvincia": 20,
+      "codMunicipio": 903,
+      "DC": 3,
+      "Municipio": "Baliarrain"
+    },
+    {
+      "idProvincia": 20,
+      "codMunicipio": 904,
+      "DC": 8,
+      "Municipio": "Lasarte-Oria"
+    },
+    {
+      "idProvincia": 20,
+      "codMunicipio": 905,
+      "DC": 4,
+      "Municipio": "Astigarraga"
+    },
+    {
+      "idProvincia": 20,
+      "codMunicipio": 906,
+      "DC": 9,
+      "Municipio": "Gaztelu"
+    },
+    {
+      "idProvincia": 20,
+      "codMunicipio": 907,
+      "DC": 5,
+      "Municipio": "Altzo"
+    },
+    {
+      "idProvincia": 22,
+      "codMunicipio": 901,
+      "DC": 7,
+      "Municipio": "Valle de Hecho"
+    },
+    {
+      "idProvincia": 22,
+      "codMunicipio": 902,
+      "DC": 1,
+      "Municipio": "Puente la Reina de Jaca"
+    },
+    {
+      "idProvincia": 22,
+      "codMunicipio": 903,
+      "DC": 7,
+      "Municipio": "San Miguel del Cinca"
+    },
+    {
+      "idProvincia": 22,
+      "codMunicipio": 904,
+      "DC": 2,
+      "Municipio": "Hoz y Costean"
+    },
+    {
+      "idProvincia": 22,
+      "codMunicipio": 905,
+      "DC": 5,
+      "Municipio": "Lupiñén-Ortilla"
+    },
+    {
+      "idProvincia": 22,
+      "codMunicipio": 906,
+      "DC": 8,
+      "Municipio": "Santa María de Dulcis"
+    },
+    {
+      "idProvincia": 22,
+      "codMunicipio": 907,
+      "DC": 4,
+      "Municipio": "Aínsa-Sobrarbe"
+    },
+    {
+      "idProvincia": 22,
+      "codMunicipio": 908,
+      "DC": 0,
+      "Municipio": "Vencillón"
+    },
+    {
+      "idProvincia": 23,
+      "codMunicipio": 901,
+      "DC": 3,
+      "Municipio": "Arroyo del Ojanco"
+    },
+    {
+      "idProvincia": 23,
+      "codMunicipio": 902,
+      "DC": 8,
+      "Municipio": "Santiago-Pontones"
+    },
+    {
+      "idProvincia": 23,
+      "codMunicipio": 903,
+      "DC": 4,
+      "Municipio": "Villatorres"
+    },
+    {
+      "idProvincia": 24,
+      "codMunicipio": 901,
+      "DC": 5,
+      "Municipio": "Villaornate y Castro"
+    },
+    {
+      "idProvincia": 24,
+      "codMunicipio": 902,
+      "DC": 0,
+      "Municipio": "Villamanín"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 901,
+      "DC": 2,
+      "Municipio": "Guingueta d'Àneu, La"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 902,
+      "DC": 5,
+      "Municipio": "Sant Martí de Riucorb"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 903,
+      "DC": 1,
+      "Municipio": "Castell de Mur"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 904,
+      "DC": 6,
+      "Municipio": "Fígols i Alinyà"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 905,
+      "DC": 0,
+      "Municipio": "Ribera d'Ondara"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 906,
+      "DC": 3,
+      "Municipio": "Gimenells i el Pla de la Font"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 907,
+      "DC": 9,
+      "Municipio": "Vansa i Fórnols, La"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 908,
+      "DC": 4,
+      "Municipio": "Josa i Tuixén"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 909,
+      "DC": 8,
+      "Municipio": "Plans de Sió, Els"
+    },
+    {
+      "idProvincia": 25,
+      "codMunicipio": 910,
+      "DC": 2,
+      "Municipio": "Riu de Cerdanya"
+    },
+    {
+      "idProvincia": 28,
+      "codMunicipio": 901,
+      "DC": 9,
+      "Municipio": "Lozoyuela-Navas-Sieteiglesias"
+    },
+    {
+      "idProvincia": 28,
+      "codMunicipio": 902,
+      "DC": 4,
+      "Municipio": "Puentes Viejas"
+    },
+    {
+      "idProvincia": 28,
+      "codMunicipio": 903,
+      "DC": 0,
+      "Municipio": "Tres Cantos"
+    },
+    {
+      "idProvincia": 28,
+      "codMunicipio": 904,
+      "DC": 5,
+      "Municipio": "Serrada de la Fuente"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 901,
+      "DC": 2,
+      "Municipio": "Barañain"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 902,
+      "DC": 7,
+      "Municipio": "Berrioplano/Berriobeiti"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 903,
+      "DC": 3,
+      "Municipio": "Berriozar"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 904,
+      "DC": 8,
+      "Municipio": "Esteríbar"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 905,
+      "DC": 1,
+      "Municipio": "Egüés"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 906,
+      "DC": 4,
+      "Municipio": "Galar"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 907,
+      "DC": 9,
+      "Municipio": "Aranguren"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 908,
+      "DC": 5,
+      "Municipio": "Lekunberri"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 909,
+      "DC": 0,
+      "Municipio": "Noáin (Valle de Elorz)/Noain (Elortzibar)"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 910,
+      "DC": 4,
+      "Municipio": "Orkoien"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 911,
+      "DC": 9,
+      "Municipio": "Hiriberri/Villanueva de Aezkoa"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 912,
+      "DC": 3,
+      "Municipio": "Bidaurreta"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 913,
+      "DC": 8,
+      "Municipio": "Zizur Mayor/Zizur Nagusia"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 914,
+      "DC": 2,
+      "Municipio": "Orísoain"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 915,
+      "DC": 7,
+      "Municipio": "Irurtzun"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 916,
+      "DC": 1,
+      "Municipio": "Olkotz"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 917,
+      "DC": 5,
+      "Municipio": "Ezkabarte"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 918,
+      "DC": 0,
+      "Municipio": "Olazti/Olazagutía"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 919,
+      "DC": 6,
+      "Municipio": "Beriáin"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 920,
+      "DC": 1,
+      "Municipio": "Arakil"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 921,
+      "DC": 7,
+      "Municipio": "Ultzama"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 922,
+      "DC": 2,
+      "Municipio": "Atez"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 923,
+      "DC": 8,
+      "Municipio": "Valle de Yerri/Deierri"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 924,
+      "DC": 3,
+      "Municipio": "Araitz"
+    },
+    {
+      "idProvincia": 31,
+      "codMunicipio": 925,
+      "DC": 9,
+      "Municipio": "Arce/Artzi"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 901,
+      "DC": 5,
+      "Municipio": "Osorno la Mayor"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 902,
+      "DC": 0,
+      "Municipio": "Valle del Retortillo"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 903,
+      "DC": 6,
+      "Municipio": "Loma de Ucieza"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 904,
+      "DC": 1,
+      "Municipio": "Pernía, La"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 905,
+      "DC": 7,
+      "Municipio": "Melgar de Yuso"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 906,
+      "DC": 2,
+      "Municipio": "Aguilar de Campoo"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 907,
+      "DC": 8,
+      "Municipio": "Herrera de Pisuerga"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 908,
+      "DC": 3,
+      "Municipio": "Salinas de Pisuerga"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 909,
+      "DC": 6,
+      "Municipio": "Baltanás"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 910,
+      "DC": 0,
+      "Municipio": "Santa Cecilia del Alcor"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 911,
+      "DC": 5,
+      "Municipio": "Venta de Baños"
+    },
+    {
+      "idProvincia": 34,
+      "codMunicipio": 912,
+      "DC": 9,
+      "Municipio": "Santoyo"
+    },
+    [
+        {
+          "idProvincia": 35,
+          "codMunicipio": 908,
+          "DC": 6,
+          "Municipio": "Tejeda"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 909,
+          "DC": 1,
+          "Municipio": "Telde"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 910,
+          "DC": 4,
+          "Municipio": "Teror"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 911,
+          "DC": 9,
+          "Municipio": "Valleseco"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 912,
+          "DC": 3,
+          "Municipio": "Valsequillo de Gran Canaria"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 913,
+          "DC": 7,
+          "Municipio": "Vega de San Mateo"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 914,
+          "DC": 2,
+          "Municipio": "Arucas"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 915,
+          "DC": 8,
+          "Municipio": "Artenara"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 916,
+          "DC": 3,
+          "Municipio": "Aldea de San Nicolás, La"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 917,
+          "DC": 9,
+          "Municipio": "Haría"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 918,
+          "DC": 4,
+          "Municipio": "San Bartolomé"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 919,
+          "DC": 0,
+          "Municipio": "Teguise"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 920,
+          "DC": 5,
+          "Municipio": "Tinajo"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 921,
+          "DC": 1,
+          "Municipio": "Yaiza"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 922,
+          "DC": 6,
+          "Municipio": "Arrecife"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 923,
+          "DC": 2,
+          "Municipio": "Puerto del Rosario"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 924,
+          "DC": 7,
+          "Municipio": "Betancuria"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 925,
+          "DC": 3,
+          "Municipio": "Antigua"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 926,
+          "DC": 8,
+          "Municipio": "Aría"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 927,
+          "DC": 4,
+          "Municipio": "Tejeda (Anejo Costa)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 928,
+          "DC": 9,
+          "Municipio": "Tías"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 929,
+          "DC": 5,
+          "Municipio": "Ingenio"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 930,
+          "DC": 0,
+          "Municipio": "Gáldar"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 931,
+          "DC": 6,
+          "Municipio": "Santa María de Guía de Gran Canaria"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 932,
+          "DC": 1,
+          "Municipio": "Agaete (Casco Urbano)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 933,
+          "DC": 7,
+          "Municipio": "Valleseco (Barrio de Lanzarote)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 934,
+          "DC": 2,
+          "Municipio": "Villa de Moya (Costa)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 935,
+          "DC": 8,
+          "Municipio": "Arucas (Visvique)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 936,
+          "DC": 3,
+          "Municipio": "Teror (Barrio del Palmar)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 937,
+          "DC": 9,
+          "Municipio": "Telde (Jinámar)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 938,
+          "DC": 4,
+          "Municipio": "Telde (Las Huesas)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 939,
+          "DC": 0,
+          "Municipio": "Artenara (Acusa)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 940,
+          "DC": 5,
+          "Municipio": "Tejeda (Cuevas Caídas)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 941,
+          "DC": 1,
+          "Municipio": "Santa Brígida (Monte)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 942,
+          "DC": 6,
+          "Municipio": "Mogán (Puerto de Mogán)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 943,
+          "DC": 2,
+          "Municipio": "Mogán (Arguineguín)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 944,
+          "DC": 7,
+          "Municipio": "San Bartolomé de Tirajana"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 945,
+          "DC": 3,
+          "Municipio": "Santa Lucía de Tirajana"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 946,
+          "DC": 8,
+          "Municipio": "Vega de San Mateo (Urbano)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 947,
+          "DC": 4,
+          "Municipio": "Valsequillo (Casco)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 948,
+          "DC": 9,
+          "Municipio": "Teguise (Costa Teguise)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 949,
+          "DC": 5,
+          "Municipio": "Tías (Puerto del Carmen)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 950,
+          "DC": 0,
+          "Municipio": "Tinajo (La Santa)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 951,
+          "DC": 6,
+          "Municipio": "Yaiza (Playa Blanca)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 952,
+          "DC": 1,
+          "Municipio": "Haría (Máguez)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 953,
+          "DC": 7,
+          "Municipio": "Arrecife (Argana Alta)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 954,
+          "DC": 2,
+          "Municipio": "Antigua (Caleta de Fuste)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 955,
+          "DC": 8,
+          "Municipio": "Betancuria (Vega de Río Palmas)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 956,
+          "DC": 3,
+          "Municipio": "Puerto del Rosario (Casillas del Ángel)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 957,
+          "DC": 9,
+          "Municipio": "Pájara (Costa Calma)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 958,
+          "DC": 4,
+          "Municipio": "Oliva, La (Corralejo)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 959,
+          "DC": 0,
+          "Municipio": "Firgas (Casco)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 960,
+          "DC": 5,
+          "Municipio": "Arucas (Santidad)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 961,
+          "DC": 1,
+          "Municipio": "Teror (Arbejales)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 962,
+          "DC": 6,
+          "Municipio": "Telde (Valle de los Nueve)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 963,
+          "DC": 2,
+          "Municipio": "Gáldar (Barrial)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 964,
+          "DC": 7,
+          "Municipio": "Santa María de Guía (La Atalaya)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 965,
+          "DC": 3,
+          "Municipio": "Moya (Fontanales)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 966,
+          "DC": 8,
+          "Municipio": "Las Palmas de Gran Canaria"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 967,
+          "DC": 4,
+          "Municipio": "Ingenio (Carrizal)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 968,
+          "DC": 9,
+          "Municipio": "Agüimes"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 969,
+          "DC": 5,
+          "Municipio": "Santa Lucía (Vecindario)"
+        },
+        {
+          "idProvincia": 35,
+          "codMunicipio": 970,
+          "DC": 0,
+          "Municipio": "Tejeda (La Culata)"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 2,
+          "DC": 5,
+          "Municipio": "Agolada"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 3,
+          "DC": 1,
+          "Municipio": "Arbo"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 4,
+          "DC": 6,
+          "Municipio": "Baiona"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 5,
+          "DC": 2,
+          "Municipio": "Barro"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 6,
+          "DC": 7,
+          "Municipio": "Bueu"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 7,
+          "DC": 3,
+          "Municipio": "Caldas de Reis"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 8,
+          "DC": 8,
+          "Municipio": "Cambados"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 9,
+          "DC": 4,
+          "Municipio": "Campo Lameiro"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 10,
+          "DC": 9,
+          "Municipio": "Cangas"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 11,
+          "DC": 5,
+          "Municipio": "Cotobade"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 12,
+          "DC": 0,
+          "Municipio": "Covelo"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 13,
+          "DC": 6,
+          "Municipio": "Cuntis"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 14,
+          "DC": 1,
+          "Municipio": "Dozón"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 15,
+          "DC": 7,
+          "Municipio": "Estrada, A"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 16,
+          "DC": 2,
+          "Municipio": "Forcarei"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 17,
+          "DC": 8,
+          "Municipio": "Fornelos de Montes"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 18,
+          "DC": 3,
+          "Municipio": "Gondomar"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 19,
+          "DC": 9,
+          "Municipio": "Grove, O"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 20,
+          "DC": 4,
+          "Municipio": "Lalín"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 21,
+          "DC": 0,
+          "Municipio": "Marín"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 22,
+          "DC": 5,
+          "Municipio": "Meaño"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 23,
+          "DC": 1,
+          "Municipio": "Meis"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 24,
+          "DC": 6,
+          "Municipio": "Moaña"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 25,
+          "DC": 2,
+          "Municipio": "Mondariz"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 26,
+          "DC": 7,
+          "Municipio": "Mondariz-Balneario"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 27,
+          "DC": 3,
+          "Municipio": "Moraña"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 28,
+          "DC": 8,
+          "Municipio": "Nigrán"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 29,
+          "DC": 4,
+          "Municipio": "Oia"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 30,
+          "DC": 9,
+          "Municipio": "Pazos de Borbén"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 31,
+          "DC": 5,
+          "Municipio": "Poio"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 32,
+          "DC": 0,
+          "Municipio": "Ponte Caldelas"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 33,
+          "DC": 6,
+          "Municipio": "Ponteareas"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 34,
+          "DC": 1,
+          "Municipio": "Pontecesures"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 35,
+          "DC": 7,
+          "Municipio": "Pontevedra"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 36,
+          "DC": 2,
+          "Municipio": "Porriño, O"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 37,
+          "DC": 8,
+          "Municipio": "Portas"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 38,
+          "DC": 3,
+          "Municipio": "Redondela"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 39,
+          "DC": 9,
+          "Municipio": "Ribadumia"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 40,
+          "DC": 4,
+          "Municipio": "Rodeiro"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 41,
+          "DC": 0,
+          "Municipio": "Salceda de Caselas"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 42,
+          "DC": 5,
+          "Municipio": "Salvaterra de Miño"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 43,
+          "DC": 1,
+          "Municipio": "Sanxenxo"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 44,
+          "DC": 6,
+          "Municipio": "Silleda"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 45,
+          "DC": 2,
+          "Municipio": "Soutomaior"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 46,
+          "DC": 7,
+          "Municipio": "Tomiño"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 47,
+          "DC": 3,
+          "Municipio": "Tui"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 48,
+          "DC": 8,
+          "Municipio": "Valga"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 49,
+          "DC": 4,
+          "Municipio": "Vigo"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 50,
+          "DC": 9,
+          "Municipio": "Vilaboa"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 51,
+          "DC": 5,
+          "Municipio": "Vilagarcía de Arousa"
+        },
+        {
+          "idProvincia": 36,
+          "codMunicipio": 52,
+          "DC": 0,
+          "Municipio": "Vilanova de Arousa"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 2,
+          "DC": 7,
+          "Municipio": "Agallas"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 3,
+          "DC": 2,
+          "Municipio": "Ahigal de Villarino"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 4,
+          "DC": 8,
+          "Municipio": "Alameda de Gardón, La"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 5,
+          "DC": 3,
+          "Municipio": "Alamedilla"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 6,
+          "DC": 9,
+          "Municipio": "Alaraz"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 7,
+          "DC": 4,
+          "Municipio": "Alba de Tormes"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 8,
+          "DC": 0,
+          "Municipio": "Alba de Yeltes"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 9,
+          "DC": 5,
+          "Municipio": "La Alberguería de Argañán"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 10,
+          "DC": 1,
+          "Municipio": "Alconada"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 11,
+          "DC": 6,
+          "Municipio": "Aldea del Obispo"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 12,
+          "DC": 2,
+          "Municipio": "Aldeacipreste"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 13,
+          "DC": 7,
+          "Municipio": "Aldeadávila de la Ribera"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 14,
+          "DC": 3,
+          "Municipio": "Aldealengua"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 15,
+          "DC": 8,
+          "Municipio": "Aldeanueva de Figueroa"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 16,
+          "DC": 4,
+          "Municipio": "Aldeanueva de la Sierra"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 17,
+          "DC": 9,
+          "Municipio": "Aldeaseca de Alba"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 18,
+          "DC": 5,
+          "Municipio": "Aldehuela de Yeltes"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 19,
+          "DC": 0,
+          "Municipio": "Gallegos de Argañán"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 20,
+          "DC": 6,
+          "Municipio": "Gallegos de Solmirón"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 21,
+          "DC": 1,
+          "Municipio": "Garcibuey"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 22,
+          "DC": 7,
+          "Municipio": "Garrido"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 23,
+          "DC": 2,
+          "Municipio": "Granjera de los Dieces"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 24,
+          "DC": 8,
+          "Municipio": "Guadramiro"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 25,
+          "DC": 3,
+          "Municipio": "Herguijuela de Ciudad Rodrigo"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 26,
+          "DC": 9,
+          "Municipio": "Herguijuela de la Sierra"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 27,
+          "DC": 4,
+          "Municipio": "La Hinojosa de Duero"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 28,
+          "DC": 0,
+          "Municipio": "Horcajo Medianero"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 29,
+          "DC": 5,
+          "Municipio": "Cereceda de la Sierra"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 30,
+          "DC": 1,
+          "Municipio": "Serradilla del Llano"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 31,
+          "DC": 6,
+          "Municipio": "Sequeros"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 32,
+          "DC": 2,
+          "Municipio": "Sotuélamos"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 33,
+          "DC": 7,
+          "Municipio": "Tabera de Abajo"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 34,
+          "DC": 3,
+          "Municipio": "Tala, La"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 35,
+          "DC": 8,
+          "Municipio": "Tamames"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 36,
+          "DC": 4,
+          "Municipio": "Tarazona de Guareña"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 37,
+          "DC": 9,
+          "Municipio": "Tardáguila"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 38,
+          "DC": 5,
+          "Municipio": "Tejado"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 39,
+          "DC": 0,
+          "Municipio": "Tenebrón"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 40,
+          "DC": 6,
+          "Municipio": "Topas"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 41,
+          "DC": 1,
+          "Municipio": "Tresbelloso"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 42,
+          "DC": 7,
+          "Municipio": "Urrós"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 43,
+          "DC": 2,
+          "Municipio": "Valdecarros"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 44,
+          "DC": 8,
+          "Municipio": "Valdefuentes de Sangusín"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 45,
+          "DC": 3,
+          "Municipio": "Valdehijaderos"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 46,
+          "DC": 9,
+          "Municipio": "Valdelacasa"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 47,
+          "DC": 4,
+          "Municipio": "Valdemierque"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 48,
+          "DC": 0,
+          "Municipio": "Valderrodrigo"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 49,
+          "DC": 5,
+          "Municipio": "Valdunciel"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 50,
+          "DC": 1,
+          "Municipio": "Valero"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 51,
+          "DC": 6,
+          "Municipio": "Vecinos"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 52,
+          "DC": 2,
+          "Municipio": "Vega de Tirados"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 53,
+          "DC": 7,
+          "Municipio": "Veguillas, Las"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 54,
+          "DC": 3,
+          "Municipio": "Vellés, La"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 55,
+          "DC": 8,
+          "Municipio": "Ventosa del Río Almar"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 56,
+          "DC": 4,
+          "Municipio": "Vídola, La"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 57,
+          "DC": 9,
+          "Municipio": "Villaflores"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 58,
+          "DC": 5,
+          "Municipio": "Villagonzalo de Tormes"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 59,
+          "DC": 0,
+          "Municipio": "Villalba de los Llanos"
+        },
+        {
+          "idProvincia": 37,
+          "codMunicipio": 60,
+          "DC": 6,
+          "Municipio": "Villamayor"
+        }
+      ]
+      
+  ]
+}

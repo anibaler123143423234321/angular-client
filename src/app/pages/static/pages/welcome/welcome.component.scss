@@ -1,0 +1,289 @@
+/***************************************************
+ * SECCIÓN PRINCIPAL DEL FORM
+ ***************************************************/
+ .form-section {
+  max-width: 80%;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+/***************************************************
+ * CARDS
+ ***************************************************/
+.main-card {
+  margin-bottom: 3rem;   /* Separación entre tarjetas */
+  position: relative;    /* Para el icono flotante */
+  border-radius: 20px;   /* Borde redondeado en la tarjeta */
+  overflow: visible;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.1);
+  border: 0.0625rem solid #dce3ec;
+
+  /* Ajustar padding interno */
+  ::ng-deep .mat-card-content {
+    padding: 2rem !important;
+  }
+}
+
+/***************************************************
+ * ÍCONO FLOTANTE (CONTENEDOR CUADRADO)
+ ***************************************************/
+.icon-container {
+  position: absolute;
+  top: -2rem;
+  left: 0.935rem;
+  width: 3.5rem;
+  height: 3.5rem;
+
+  background-color: #fff;
+  border: 0.125rem solid #26AFE5; /* Borde #006a66 */
+  border-radius: 0.5rem; /* Esquinas redondeadas */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icono-flotante {
+  font-size: 1.5rem;
+  color: #26AFE5; /* Color del ícono */
+}
+
+/***************************************************
+ * TÍTULOS DE SECCIÓN 
+ ***************************************************/
+.section-title {
+  /* Si quieres que sean negro, pónselo aquí. 
+     Pero si no, #006a66 para distinguir. 
+     Cambiar a #000 si deseas título negro.
+  */
+  color: #2E74BB;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+/***************************************************
+ * BORDE Y LABEL DE LOS CAMPOS (#006a66)
+ ***************************************************/
+/* 1) El contorno outline normal, SIEMPRE #006a66 */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #26AFE5 !important; 
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 0.5rem 0px 0px #F5F7FB;
+  border-radius: 0.75rem;
+
+}
+/* 2) El “trazo grueso” (cuando enfoca) también #26AFE5 */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #26AFE5 !important;
+  box-shadow: 0.5rem 0.5rem 0px 0px #F5F7FB;
+  border-radius: 0.75rem;
+
+}
+/* 3) Etiquetas (label) en negro */
+::ng-deep .mat-form-field-label {
+  color: #000 !important; /* Etiquetas en negro */
+  font-weight: 500;
+}
+/* 4) Quitar cualquier hover/focus que cambie color a otro */
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-hover:hover 
+  .mat-form-field-outline-thick {
+  color: #26AFE5 !important;
+}
+.form-section mat-card{
+  background-color:  #FFF !important;
+}
+::ng-deep .mat-input-element {
+  caret-color: #000; /* Asegúrate de que el cursor sea visible */
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #26AFE5; /* Color del borde cuando no está enfocado */
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
+  color: #26AFE5; /* Color del borde cuando está enfocado */
+}
+/***************************************************
+ * TEXTO INTERNO DE LOS INPUTS (placeholder/typed)
+ ***************************************************/
+/* Normalmente Angular Material deja el texto en negro, 
+   pero si necesitas forzar:
+*/
+::ng-deep .mat-input-element,
+::ng-deep .mat-select-value-text {
+  color: #000 !important; /* Texto real que escribe el usuario */
+}
+
+/***************************************************
+ * QUITAR PADDINGS EXTRAS
+ ***************************************************/
+::ng-deep .mat-form-field-wrapper {
+  padding: 0 !important;
+}
+::ng-deep .mat-form-field-subscript-wrapper {
+  margin: 0;
+}
+::ng-deep .mat-form-field-flex {
+  border-radius: 0.5rem;
+}
+
+/***************************************************
+ * SEPARADOR (HR)
+ ***************************************************/
+.title-separator {
+  border: none;
+  border-top: 0.0625rem solid #ccc;
+  margin-bottom: 1rem;
+}
+
+/***************************************************
+ * GRID 3x3 Y GRID 2x2
+ ***************************************************/
+.grid-three-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.grid-two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/***************************************************
+ * MÓVILES A PORTAR
+ ***************************************************/
+.moviles-container {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .movil-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .movil-field {
+    flex: 1;
+  }
+  .btn-add-movil {
+    margin-top: 0.3rem;
+    align-self: flex-start;
+  }
+}
+
+/***************************************************
+ * CHECKBOXES
+ ***************************************************/
+.checkboxes-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.2rem 0;
+}
+
+/***************************************************
+ * DATEPICKER
+ ***************************************************/
+.datepicker-container {
+  margin-top: 0.3rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+}
+
+/***************************************************
+ * BOTÓN DE REGISTRAR
+ ***************************************************/
+.button-row {
+  margin-top: 1rem;
+  text-align: right;
+}
+.btn-registrar {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/***************************************************
+ * FOOTER / CERRAR SESIÓN
+ ***************************************************/
+ .footer-section {
+  max-width: 1200px;
+  margin: 0.5rem auto;
+  text-align: right;
+}
+
+ 
+/***************************************************
+ * FOOTER / CERRAR SESIÓN
+ ***************************************************/
+ .mat-icon{
+  height: 1.5rem;
+  width: 1.5rem;
+ }
+
+
+
+ .date-selector-field {
+  width: 100%;
+
+  ::ng-deep {
+    .mat-form-field-flex {
+      align-items: center;
+      background-color: #fff;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    .date-selector-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 1rem;
+
+      mat-select {
+        flex: 1;
+        width: 100%;
+
+        .mat-select-trigger {
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
+
+        .mat-select-value {
+          color: #000;
+          font-weight: 500;
+        }
+
+        .mat-select-arrow {
+          color: #26AFE5;
+        }
+      }
+    }
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+
+    .mat-form-field-infix {
+      padding: 8px 0;
+      border-top: 0;
+    }
+
+    .mat-form-field-outline {
+      height: 56px;
+      border-radius: 0.5rem;
+    }
+  }
+}

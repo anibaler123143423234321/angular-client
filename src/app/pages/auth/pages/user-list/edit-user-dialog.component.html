@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>Editar Usuario</h2>
+<mat-dialog-content>
+  <form fxLayout="column" fxLayoutGap="1rem">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="editingUser.nombre" name="nombre">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="editingUser.username" name="username">
+    </mat-form-field>    
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dirección</mat-label>
+      <input matInput [(ngModel)]="editingUser.sede" name="sede">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Teléfono</mat-label>
+      <input matInput [(ngModel)]="editingUser.telefono" name="telefono"
+             type="tel" pattern="[0-9]{0,9}" maxlength="9"
+             (keypress)="validateNumberInput($event)">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="editingUser.email" name="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Estado</mat-label>
+      <mat-select [(ngModel)]="editingUser.estado" name="estado">
+        <mat-option value="A">Activo</mat-option>
+        <mat-option value="I">Inactivo</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <!-- Campo para Role -->
+    <mat-form-field appearance="outline">
+      <mat-label>Role</mat-label>
+      <mat-select [(ngModel)]="editingUser.role" name="role">
+        <mat-option value="ADMIN">ADMIN</mat-option>
+        <mat-option value="ASESOR">ASESOR</mat-option>
+        <mat-option value="BACKOFFICE">BACKOFFICE</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Guardar</button>
+</mat-dialog-actions>

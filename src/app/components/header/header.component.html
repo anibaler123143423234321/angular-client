@@ -1,0 +1,35 @@
+<mat-toolbar class="toolbar-custom" fxLayout="row" fxLayoutAlign="start center">
+  <!-- Botón de menú (izquierda) -->
+  <button mat-icon-button (click)="onMenuToggleDispatch()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Separa los elementos hacia la derecha -->
+  <span class="spacer"></span>
+
+  <!-- Contenedor derecho con Horario + User Card en la misma fila -->
+  <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="1rem">
+    <!-- Horario de Perú y España -->
+    <div
+      class="horario-container"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      fxLayoutGap="0.5rem"
+    >
+      <mat-icon>schedule</mat-icon>
+      <span>PER {{ horaPeru | date : "h:mm a" }}</span>
+      <span class="divider">|</span>
+      <span>ESP {{ horaEspana | date : "h:mm a" }}</span>
+    </div>
+
+    <!-- Card de usuario (a la derecha del horario) -->
+    <mat-card class="user-card" *ngIf="isAuthorized">
+      <img
+      [src]="userImage"
+      alt="User photo"
+      class="user-image"
+    />
+      <span class="user-name">{{ user?.nombre }} {{ user?.apellido }}</span>
+    </mat-card>
+  </div>
+</mat-toolbar>

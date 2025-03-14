@@ -1,0 +1,97 @@
+.users-container {
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  /* Header section */
+  .header-section {
+    background-color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Search section */
+  .search-section {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Table styles */
+  .table-container {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  
+  .mat-table {
+    width: 100%;
+    background: transparent;
+  }
+  
+  .mat-header-cell {
+    background-color: #f4f5f7;
+    color: #5e6c84;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 1rem;
+  }
+  
+  .mat-cell {
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: #172b4d;
+  }
+  
+  /* Button styles */
+  .action-button {
+    margin: 0 0.25rem;
+    min-width: 90px;
+  }
+  
+  /* Pagination controls */
+  .pagination-controls {
+    padding: 1rem;
+    background-color: white;
+    border-top: 0.0625rem solid #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* Loading and error states */
+  .loading-indicator {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .error-message {
+    padding: 1rem;
+    background-color: #fee2e2;
+    border-radius: 0.5rem;
+    color: #dc2626;
+    margin-bottom: 1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .users-container {
+      padding: 1rem;
+    }
+    
+    .action-button {
+      min-width: 70px;
+      padding: 0 0.5rem;
+    }
+  }
+  .search-section button{
+    margin-bottom: 1.5rem !important;
+  }
+  

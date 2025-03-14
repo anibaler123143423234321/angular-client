@@ -1,0 +1,158 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "styles/main.scss";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.mat-raised-button{
+    font-size: 0.9rem !important;
+}
+.mat-list-base {
+    padding: 0px  1rem !important;
+}
+.mat-icon {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+.mat-list-base .mat-list-item{
+    height: 3rem !important;
+    font-size: 1rem !important;
+
+}
+.material-icons{
+    font-size: 1.5rem !important;
+}
+.mat-raised-button{
+    min-width: 4rem !important;
+    line-height: 3.25rem !important;
+    padding: 0 1rem !important;
+    border-radius: 0.25rem !important;
+}
+.mat-form-field-outline-start{
+    width: 0.34375rem !important;
+}
+.mat-form-field-outline-gap{
+    width: 6.296875rem !important;
+}
+.mat-form-field-outline-end{
+    min-width: 0.3125rem !important;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 4rem;
+}
+.mat-toolbar{
+    font: 500 1.25rem / 2rem Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-stroked-button {
+    border: 0.0625rem solid currentColor !important;
+    padding: 0 0.95rem !important;
+    line-height: 2.125rem !important;
+    font-size: 0.9rem;
+}
+.mat-body-2{
+    font: 500 0.9rem / 1.5rem Roboto, "Helvetica Neue", sans-serif;
+
+}
+@media screen and (max-resolution: 96dpi) {
+    html {
+      font-size: 16px !important; /* 1rem = 16px */
+    }
+  }
+  
+  /* 110% scaling (~105dpi) */
+  @media screen and (min-resolution: 105dpi) and (max-resolution: 110dpi) {
+    html {
+      font-size: 14.5px !important;
+    }
+  }
+  
+  /* 125% scaling (~120dpi) */
+  @media screen and (min-resolution: 120dpi) and (max-resolution: 143dpi) {
+    html {
+      font-size: 12.8px !important;
+    }
+  }
+  
+  /* 150% scaling (~144dpi) */
+  @media screen and (min-resolution: 144dpi) and (max-resolution: 159dpi) {
+    html {
+      font-size: 10.67px !important;
+    }
+  }
+  
+  /* 175% scaling (~168dpi) */
+  @media screen and (min-resolution: 160dpi) and (max-resolution: 191dpi) {
+    html {
+      font-size: 9.14px !important;
+    }
+  }
+  
+  /* 200% scaling (~192dpi) */
+  @media screen and (min-resolution: 192dpi) and (max-resolution: 239dpi) {
+    html {
+      font-size: 8px !important;
+    }
+  }
+  
+  /* 225% scaling (~216dpi) */
+  @media screen and (min-resolution: 240dpi) and (max-resolution: 263dpi) {
+    html {
+      font-size: 7.11px !important;
+    }
+  }
+  
+  /* 250% scaling (~240dpi) */
+  @media screen and (min-resolution: 264dpi) and (max-resolution: 287dpi) {
+    html {
+      font-size: 6.4px !important;
+    }
+  }
+  
+  /* 300% scaling (~288dpi) */
+  @media screen and (min-resolution: 288dpi) and (max-resolution: 335dpi) {
+    html {
+      font-size: 5.33px !important;
+    }
+  }
+  
+  /* 350% scaling (~336dpi) */
+  @media screen and (min-resolution: 336dpi) and (max-resolution: 383dpi) {
+    html {
+      font-size: 4.57px !important;
+    }
+  }
+  
+  /* 400% scaling (~384dpi) */
+  @media screen and (min-resolution: 384dpi) and (max-resolution: 431dpi) {
+    html {
+      font-size: 4px !important;
+    }
+  }
+  
+  /* 450% scaling (~432dpi) */
+  @media screen and (min-resolution: 432dpi) and (max-resolution: 479dpi) {
+    html {
+      font-size: 3.56px !important;
+    }
+  }
+  
+  /* 500% scaling (~480dpi) */
+  @media screen and (min-resolution: 480dpi) {
+    html {
+      font-size: 3.2px !important;
+    }
+  }
+  
+  /* Ajustes para pantallas grandes (3840px x 2160px) */
+  @media screen and (min-width: 3840px) {
+    html {
+      font-size: 17px !important; /* Aumentar el tamaño de fuente para pantallas 4K */
+    }
+  }
+  
+  /* Para pantallas más pequeñas */
+  @media screen and (max-width: 768px) {
+    html {
+      font-size: 14px !important; /* Ajuste para pantallas medianas (tabletas) */
+    }
+  }
+  

@@ -1,0 +1,105 @@
+<section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+  <!-- Card para carga masiva de usuarios ASESOR -->
+  <mat-card class="upload-card">
+    <mat-card-header>
+      <mat-card-title>Carga Masiva de Usuarios ASESOR</mat-card-title>
+      <mat-card-subtitle>Seleccione un archivo Excel para cargar</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="0.675rem" class="form-container">
+        <!-- Botón para abrir el input (oculto) -->
+        <button mat-raised-button color="primary" (click)="asesorFileInput.click()">
+          <mat-icon>upload</mat-icon>
+          Seleccionar Archivo
+        </button>
+        <!-- Input oculto para seleccionar archivo -->
+        <input
+          #asesorFileInput
+          id="asesorFileInput"
+          type="file"
+          (change)="onFileSelected($event, 'asesor')"
+          accept=".xlsx, .xls"
+          style="display: none"
+        />
+        <!-- Muestra el nombre del archivo seleccionado -->
+        <p *ngIf="selectedFileAsesor" class="file-name">
+          Archivo seleccionado: {{ selectedFileAsesor.name }}
+        </p>
+        <!-- Botón para subir archivo -->
+        <button
+          type="button"
+          mat-raised-button
+          color="accent"
+          (click)="uploadAsesorFile()"
+          [disabled]="!selectedFileAsesor"
+        >
+          <mat-icon>cloud_upload</mat-icon>
+          Subir Archivo Excel
+        </button>
+        <mat-divider></mat-divider>
+        <!-- Mensaje de éxito -->
+        <p class="success-message" *ngIf="uploadSuccessAsesor$ | async">
+          <mat-icon color="primary">check_circle</mat-icon>
+          ¡Usuarios ASESOR cargados exitosamente!
+        </p>
+        <!-- Mensaje de error -->
+        <p class="error-message" *ngIf="uploadErrorAsesor$ | async">
+          <mat-icon color="warn">error</mat-icon>
+          Error: {{ uploadErrorAsesor$ | async }}
+        </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Card para carga masiva de usuarios BACKOFFICE -->
+  <mat-card class="upload-card">
+    <mat-card-header>
+      <mat-card-title>Carga Masiva de Usuarios BACKOFFICE</mat-card-title>
+      <mat-card-subtitle>Seleccione un archivo Excel para cargar</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="0.675rem" class="form-container">
+        <!-- Botón para abrir el input (oculto) -->
+        <button mat-raised-button color="primary" (click)="backofficeFileInput.click()">
+          <mat-icon>upload</mat-icon>
+          Seleccionar Archivo
+        </button>
+        <!-- Input oculto para seleccionar archivo -->
+        <input
+          #backofficeFileInput
+          id="backofficeFileInput"
+          type="file"
+          (change)="onFileSelected($event, 'backoffice')"
+          accept=".xlsx, .xls"
+          style="display: none"
+        />
+        <!-- Muestra el nombre del archivo seleccionado -->
+        <p *ngIf="selectedFileBackoffice" class="file-name">
+          Archivo seleccionado: {{ selectedFileBackoffice.name }}
+        </p>
+        <!-- Botón para subir archivo -->
+        <button
+          type="button"
+          mat-raised-button
+          color="accent"
+          (click)="uploadBackofficeFile()"
+          [disabled]="!selectedFileBackoffice"
+        >
+          <mat-icon>cloud_upload</mat-icon>
+          Subir Archivo Excel
+        </button>
+        <mat-divider></mat-divider>
+        <!-- Mensaje de éxito -->
+        <p class="success-message" *ngIf="uploadSuccessBackoffice$ | async">
+          <mat-icon color="primary">check_circle</mat-icon>
+          ¡Usuarios BACKOFFICE cargados exitosamente!
+        </p>
+        <!-- Mensaje de error -->
+        <p class="error-message" *ngIf="uploadErrorBackoffice$ | async">
+          <mat-icon color="warn">error</mat-icon>
+          Error: {{ uploadErrorBackoffice$ | async }}
+        </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -1,0 +1,387 @@
+<section class="form-section">
+  <!-- Formulario template-driven -->
+  <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- TARJETA 1: DATOS DEL CLIENTE -->
+    <mat-card class="main-card datos-cliente">
+      <div class="icon-container">
+        <mat-icon class="icono-flotante">account_circle</mat-icon>
+      </div>
+      <mat-card-content>
+        <section class="datos-cliente-content">
+          <h2 class="section-title">Datos del cliente</h2>
+          <hr class="title-separator" />
+
+          <div class="grid-three-columns">
+            <!-- Móvil de contacto -->
+            <mat-form-field appearance="outline">
+              <mat-label>Móvil de contacto</mat-label>
+              <input
+                matInput
+                type="tel"
+                name="movilContacto"
+                [(ngModel)]="formData.clienteResidencial.movilContacto"
+                required
+                pattern="^[0-9]*$"
+                maxlength="9"
+              />
+              <mat-error>Solo números, máximo 9 dígitos</mat-error>
+            </mat-form-field>
+
+            <!-- Operador -->
+            <mat-form-field appearance="outline">
+              <mat-label>Operador</mat-label>
+              <mat-select
+                name="campania"
+                [(ngModel)]="formData.clienteResidencial.campania"
+              >
+                <mat-option
+                  *ngFor="let operador of operadores"
+                  [value]="operador"
+                >
+                  {{ operador }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- Tipo de plan -->
+            <mat-form-field appearance="outline">
+              <mat-label>Tipo de plan</mat-label>
+              <mat-select
+                name="tipoPlan"
+                [(ngModel)]="formData.clienteResidencial.tipoPlan"
+              >
+                <mat-option value="">Seleccione...</mat-option>
+                <mat-option value="prepago">Prepago</mat-option>
+                <mat-option value="contrato">Contrato</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- NIF/NIE -->
+            <mat-form-field appearance="outline">
+              <mat-label>NIF / NIE</mat-label>
+              <input
+                matInput
+                name="nifNie"
+                [(ngModel)]="formData.clienteResidencial.nifNie"
+              />
+            </mat-form-field>
+
+            <!-- Nombre y Apellido -->
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre y Apellido</mat-label>
+              <input
+                matInput
+                name="nombresApellidos"
+                [(ngModel)]="formData.clienteResidencial.nombresApellidos"
+              />
+            </mat-form-field>
+
+            <!-- Fecha de nacimiento -->
+            <mat-form-field appearance="outline">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input
+                matInput
+                [matDatepicker]="pickerNacimiento"
+                name="fechaNacimiento"
+                [(ngModel)]="formData.clienteResidencial.fechaNacimiento"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="pickerNacimiento"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #pickerNacimiento startView="year">
+              </mat-datepicker>
+            </mat-form-field>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- TARJETA 2: DATOS DEL SERVICIO -->
+    <mat-card class="main-card datos-servicio">
+      <div class="icon-container">
+        <mat-icon class="icono-flotante">wifi_tethering</mat-icon>
+      </div>
+      <mat-card-content>
+        <section class="datos-servicio-content">
+          <h2 class="section-title">Datos del servicio</h2>
+          <hr class="title-separator" />
+          <div class="grid-three-columns">
+            <!-- Tipo de fibra -->
+            <mat-form-field appearance="outline">
+              <mat-label>Tipo de fibra</mat-label>
+              <mat-select
+                name="tipoFibra"
+                [(ngModel)]="formData.clienteResidencial.tipoFibra"
+              >
+                <mat-option *ngFor="let fibra of tiposFibra" [value]="fibra">
+                  {{ fibra }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- Permanencia -->
+            <mat-form-field appearance="outline">
+              <mat-label>Permanencia</mat-label>
+              <mat-select
+                [(ngModel)]="selectedPermanencia"
+                name="selectedPermanencia"
+                (ngModelChange)="onPermanenciaChange($event)"
+              >
+                <mat-option value="">Seleccione...</mat-option>
+                <mat-option value="No tiene permanencia"
+                  >No tiene permanencia</mat-option
+                >
+                <mat-option value="si">Sí tengo permanencia</mat-option>
+                <mat-option
+                  [value]="selectedPermanencia"
+                  *ngIf="isDateFormat(selectedPermanencia)"
+                >
+                  {{ selectedPermanencia }}
+                </mat-option>
+              </mat-select>
+              <!-- Datepicker condicional -->
+              <div *ngIf="showDatePicker" class="datepicker-container">
+                <label>Último Mes/Año de Permanencia</label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerPermanencia"
+                  placeholder="Selecciona mes y año"
+                  readonly
+                  [value]="formData.clienteResidencial.permanencia"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerPermanencia"
+                ></mat-datepicker-toggle>
+                <mat-datepicker
+                  #pickerPermanencia
+                  startView="multi-year"
+                  (monthSelected)="
+                    chosenMonthHandler($event, pickerPermanencia)
+                  "
+                  panelClass="month-picker"
+                >
+                </mat-datepicker>
+              </div>
+            </mat-form-field>
+
+            <!-- Número de móviles -->
+            <mat-form-field appearance="outline">
+              <mat-label>Números móviles</mat-label>
+              <input
+                matInput
+                type="number"
+                min="0"
+                name="numeroMoviles"
+                [(ngModel)]="formData.clienteResidencial.numeroMoviles"
+              />
+            </mat-form-field>
+
+            <!-- Plan actual -->
+            <mat-form-field appearance="outline">
+              <mat-label>Plan actual</mat-label>
+              <input
+                matInput
+                name="planActual"
+                [(ngModel)]="formData.clienteResidencial.planActual"
+              />
+            </mat-form-field>
+
+            <!-- Código postal -->
+            <mat-form-field appearance="outline">
+              <mat-label>Código postal</mat-label>
+              <input
+                matInput
+                type="tel"
+                name="codigoPostal"
+                [(ngModel)]="formData.clienteResidencial.codigoPostal"
+                pattern="^[0-9]*$"
+                maxlength="5"
+              />
+              <mat-error>Solo números, máximo 5 dígitos</mat-error>
+            </mat-form-field>
+            <!-- Ciudad: si ya no necesitas un listado, puedes cambiarlo a un input o mantenerlo -->
+           <!--  <mat-form-field appearance="outline">
+              <mat-label>Ciudad</mat-label>
+              <input
+                matInput
+                name="ciudad"
+                [(ngModel)]="formData.clienteResidencial.ciudad"
+              />
+            </mat-form-field>
+ -->
+            <!-- Provincia -->
+            <mat-form-field appearance="outline">
+              <mat-label>Provincia</mat-label>
+              <input
+                matInput
+                name="provincia"
+                [(ngModel)]="formData.clienteResidencial.provincia"
+              />
+            </mat-form-field>
+
+            <!-- Municipio -->
+            <mat-form-field appearance="outline">
+              <mat-label>Municipio</mat-label>
+              <input
+                matInput
+                name="municipio"
+                [(ngModel)]="formData.clienteResidencial.distrito"
+              />
+            </mat-form-field>
+
+            <!-- Dirección -->
+            <mat-form-field appearance="outline">
+              <mat-label>Dirección</mat-label>
+              <textarea
+                matInput
+                name="direccion"
+                [(ngModel)]="formData.clienteResidencial.direccion"
+                rows="2"
+              ></textarea>
+            </mat-form-field>
+
+            <!-- Fijo -->
+            <mat-form-field appearance="outline">
+              <mat-label>Fijo</mat-label>
+              <input
+                matInput
+                type="number"
+                name="fijoCompania"
+                [(ngModel)]="formData.clienteResidencial.fijoCompania"
+              />
+            </mat-form-field>
+
+            <!-- Móviles a portar -->
+            <div class="moviles-container">
+              <label class="block-label">Móviles a portar</label>
+              <div *ngIf="hasMovilesAPortar()">
+                <div
+                  *ngFor="
+                    let movil of formData.clienteResidencial.movilesAPortar;
+                    let i = index;
+                    trackBy: trackByIndex
+                  "
+                >
+                  <mat-form-field appearance="outline" class="movil-field">
+                    <mat-label>Número de móvil</mat-label>
+                    <input
+                      matInput
+                      type="tel"
+                      name="movilAPortar{{ i }}"
+                      [(ngModel)]="
+                        formData.clienteResidencial.movilesAPortar[i]
+                      "
+                      (input)="onMovilInput($event, i)"
+                      required
+                      pattern="^[0-9]*$"
+                      maxlength="9"
+                    />
+                    <mat-error>Solo números, máximo 9 dígitos</mat-error>
+                  </mat-form-field>
+                  <button
+                    type="button"
+                    mat-icon-button
+                    color="warn"
+                    (click)="removeMovilAPortar(i)"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <button
+                type="button"
+                mat-stroked-button
+                color="primary"
+                (click)="addMovilAPortar()"
+                class="btn-add-movil"
+              >
+                Agregar móvil a portar
+              </button>
+            </div>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- TARJETA 3: INFORMACIÓN -->
+    <mat-card class="main-card datos-informacion">
+      <div class="icon-container">
+        <mat-icon class="icono-flotante">info</mat-icon>
+      </div>
+      <mat-card-content>
+        <section class="datos-informacion-content">
+          <h2 class="section-title">Información</h2>
+          <hr class="title-separator" />
+          <div class="grid-two-columns">
+            <!-- Cuenta Bancaria -->
+            <mat-form-field appearance="outline">
+              <mat-label>Cuenta Bancaria (IBAN)</mat-label>
+              <input
+                matInput
+                name="cuentaBancaria"
+                [(ngModel)]="formData.clienteResidencial.cuentaBancaria"
+              />
+            </mat-form-field>
+            <!-- Correo electrónico -->
+            <mat-form-field appearance="outline">
+              <mat-label>Correo electrónico</mat-label>
+              <input
+                matInput
+                type="email"
+                name="correoElectronico"
+                [(ngModel)]="formData.clienteResidencial.correoElectronico"
+              />
+              <mat-error>Correo electrónico inválido</mat-error>
+            </mat-form-field>
+          </div>
+          <!-- Checkboxes -->
+          <div class="checkboxes-row">
+            <mat-checkbox
+              [(ngModel)]="formData.clienteResidencial.autorizaSeguros"
+              name="autorizaSeguros"
+            >
+            </mat-checkbox>
+            <span>Acepta recibir promociones sobre seguros</span>
+          </div>
+          <div class="checkboxes-row">
+            <mat-checkbox
+              [(ngModel)]="formData.clienteResidencial.autorizaEnergias"
+              name="autorizaEnergias"
+            >
+            </mat-checkbox>
+            <span>Acepta recibir promociones sobre energía</span>
+          </div>
+          <div class="checkboxes-row">
+            <mat-checkbox
+              [(ngModel)]="formData.clienteResidencial.ventaRealizada"
+              name="ventaRealizada"
+            >
+            </mat-checkbox>
+            <span>Venta realizada</span>
+          </div>
+          <!-- Botón final -->
+          <div class="button-row">
+            <button
+              mat-raised-button
+              color="primary"
+              class="btn-registrar"
+              type="submit"
+              [disabled]="!clienteForm.form.valid"
+            >
+              Registrar datos
+            </button>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</section>
+
+<!-- Pie o botón de cerrar sesión -->
+<section class="footer-section" *ngIf="isAuthorized && !isAdmin()">
+  <button mat-raised-button color="warn" (click)="onSignOut()">
+    Cerrar sesión
+  </button>
+</section>

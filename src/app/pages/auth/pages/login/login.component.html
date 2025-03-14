@@ -1,0 +1,45 @@
+<section class="login-container">
+  <!-- Sección Izquierda -->
+  <div class="left-section">
+    <div class="login-box">
+      <img src="assets/logovector-MIDAS.svg" alt="Midas Solutions Center" class="logo" />
+      <h2 class="title">INTRANET ASESOR DE VENTAS</h2>
+
+      <form #f="ngForm" (ngSubmit)="loginUsuario(f)">
+        <!-- Campo Username -->
+        <div class="input-group">
+          <mat-icon class="input-icon">person</mat-icon>
+          <input
+            type="text"
+            placeholder="Ingrese su usuario"
+            name="username"
+            ngModel
+            required
+          />
+        </div>
+
+        <!-- Campo Contraseña con icono de visibilidad -->
+        <div class="input-group password-group">
+          <mat-icon class="input-icon">lock</mat-icon>
+          <input
+            [type]="hidePassword ? 'password' : 'text'"
+            placeholder="Ingrese su contraseña"
+            name="password"
+            ngModel
+            required
+          />
+          <mat-icon class="toggle-password" (click)="hidePassword = !hidePassword">
+            {{ hidePassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </div>
+
+        <button type="submit" class="btn-ingresar">Ingresar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sección Derecha con Imagen -->
+  <div class="right-section">
+    <img src="assets/bg-2.webp" class="background-img2" alt="Imagen de fondo" />
+  </div>
+</section>

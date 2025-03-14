@@ -1,0 +1,190 @@
+<section class="users-container" fxLayout="column" fxLayoutAlign="start stretch">
+  <!-- Header section -->
+  <div class="header-section" fxLayout="row" fxLayoutAlign="space-between center">
+    <h1 class="mat-h1" style="margin: 0">Lista de Usuarios</h1>
+<!--     <button mat-raised-button color="primary" (click)="openCreateUserDialog()">
+      <mat-icon>add</mat-icon>
+      Crear usuario
+    </button> -->
+  </div>
+
+  <!-- Search section -->
+  <div class="search-section" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem">
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Buscar usuarios</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        matInput
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange($event)"
+        placeholder="Nombre, email, teléfono, etc."
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSearch()" style="margin-bottom: 1.5rem;">Buscar</button>
+  </div>
+
+ <!-- Loading states -->
+ <app-spinner *ngIf="loading$ | async"></app-spinner>
+ <div class="loading-indicator" *ngIf="loadingPage$ | async">
+   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+   <p class="mat-body-1">Cargando usuarios...</p>
+ </div>
+
+ <!-- Error message -->
+ <div class="error-message" *ngIf="errorPage$ | async as error">
+   <mat-icon>error_outline</mat-icon>
+   <span>{{ error }}</span>
+ </div>
+
+  <!-- Table section -->
+  <div
+    class="table-container table-responsive"
+    *ngIf="usersPage$ | async as userPage"
+  >
+    <table
+      mat-table
+      [dataSource]="userPage.users"
+      class="mat-elevation-z8"
+      style="width: 100%; margin-top: 0.675rem"
+    >
+      <!-- Columna: Nombre -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let user">
+          <ng-container *ngIf="editingUser?.id === user.id; else displayNombre">
+            <input matInput [(ngModel)]="editingUser!.nombre" />
+          </ng-container>
+          <ng-template #displayNombre> {{ user.nombre }} </ng-template>
+        </td>
+      </ng-container>
+      <!-- Columna: Username (DNI) -->
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Username</th>
+        <td mat-cell *matCellDef="let user">
+          <ng-container
+            *ngIf="editingUser?.id === user.id; else displayUsername"
+          >
+            <input matInput [(ngModel)]="editingUser!.username" />
+          </ng-container>
+          <ng-template #displayUsername> {{ user.username }} </ng-template>
+        </td>
+      </ng-container>
+      <!-- Columna: Sede (Dirección) -->
+      <ng-container matColumnDef="sede">
+        <th mat-header-cell *matHeaderCellDef>Dirección</th>
+        <td mat-cell *matCellDef="let user">
+          <ng-container *ngIf="editingUser?.id === user.id; else displaySede">
+            <input matInput [(ngModel)]="editingUser!.sede" />
+          </ng-container>
+          <ng-template #displaySede> {{ user.sede }} </ng-template>
+        </td>
+      </ng-container>
+      <!-- Columna: Correo -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Correo</th>
+        <td mat-cell *matCellDef="let user">
+          <ng-container *ngIf="editingUser?.id === user.id; else displayEmail">
+            <input matInput [(ngModel)]="editingUser!.email" />
+          </ng-container>
+          <ng-template #displayEmail> {{ user.email }} </ng-template>
+        </td>
+      </ng-container>
+            <!-- Columna: Role -->
+           <!--  <ng-container matColumnDef="role">
+              <th mat-header-cell *matHeaderCellDef>Role</th>
+              <td mat-cell *matCellDef="let user">
+                <ng-container *ngIf="editingUser?.id === user.id; else displayRole">
+                  <mat-form-field appearance="fill" style="width: 100%">
+                    <mat-select [(ngModel)]="editingUser!.role">
+                      <mat-option value="ADMIN">ADMIN</mat-option>
+                      <mat-option value="ASESOR">ASESOR</mat-option>
+                      <mat-option value="BACKOFFICE">BACKOFFICE</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </ng-container>
+                <ng-template #displayRole>
+                  {{ user.role }}
+                </ng-template>
+              </td>
+            </ng-container> -->
+      <!-- Columna: Estado -->
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
+        <td mat-cell *matCellDef="let user">
+          <ng-container *ngIf="editingUser?.id === user.id; else displayEstado">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-select [(ngModel)]="editingUser!.estado">
+                <mat-option value="A">A</mat-option>
+                <mat-option value="I">I</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+          <ng-template #displayEstado>
+            {{ user.estado }}
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Columna: Acción -->
+      <ng-container matColumnDef="accion">
+        <th mat-header-cell *matHeaderCellDef>Acción</th>
+        <td mat-cell *matCellDef="let user" fxLayout="row" fxLayoutGap="0.675rem">
+          <ng-container
+            *ngIf="editingUser?.id === user.id; else displayActions"
+          >
+            <button mat-stroked-button color="primary" (click)="saveEdit()">
+              Guardar
+            </button>
+            <button mat-stroked-button (click)="cancelEdit()">Cancelar</button>
+          </ng-container>
+          <ng-template #displayActions>
+<!--             <button
+              mat-stroked-button
+              color="primary"
+              (click)="verUsuario(user)"
+            >
+              Ver Datos
+            </button> -->
+            <button mat-stroked-button color="accent" (click)="openEditUserDialog(user)">
+              Modificar
+            </button>
+            
+            <button
+              mat-stroked-button
+              color="warn"
+              (click)="eliminarUsuario(user)"
+            >
+              Eliminar
+            </button>
+          </ng-template>
+        </td>
+      </ng-container>
+      <!-- Filas de encabezado y datos -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination-controls">
+      <button
+        mat-stroked-button
+        [disabled]="userPage.currentPage === 0"
+        (click)="prevPage()"
+      >
+        <mat-icon>chevron_left</mat-icon> Anterior
+      </button>
+
+      <span class="mat-body-2">
+        Página {{ userPage.currentPage + 1 }} de {{ userPage.totalPages }}
+      </span>
+
+      <button
+        mat-stroked-button
+        [disabled]="userPage.currentPage === userPage.totalPages - 1"
+        (click)="nextPage()"
+      >
+        Siguiente <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</section>

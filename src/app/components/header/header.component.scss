@@ -1,0 +1,56 @@
+.toolbar-custom {
+  /* Fondo claro o el que prefieras */
+  background-color: #F3F7FF;
+  color: #1E3A8A;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem; /* Margen horizontal opcional */
+
+  mat-icon {
+    color: #1E3A8A;
+    margin-right: 0.3125rem;
+  }
+}
+
+/* Separa la parte izquierda (botón menú) de la derecha (horario y user) */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Horario */
+.horario-container {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+
+  .divider {
+    margin: 0 0.675rem;
+  }
+}
+
+/* Card estilo “pill” para el usuario */
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  background-color: #FFFFFF;
+  box-shadow: none; /* Quita sombra por defecto de mat-card */
+  border: 0.0625rem solid #e0e0e0; /* Borde sutil */
+}
+
+/* Imagen del usuario (o la de defecto) */
+.user-image {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  object-fit: cover; /* Ajusta la imagen al contenedor */
+}
+
+.user-name {
+  font-size: 0.875rem;
+  color: #1E3A8A;
+  font-weight: 600;
+}
