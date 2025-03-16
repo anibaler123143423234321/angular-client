@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as ClienteActions from './save.actions';
-import { mergeMap, map, catchError, tap, switchMap } from 'rxjs/operators';
+import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { environment } from '@src/environments/environment';
-import { ClienteConUsuarioDTO, ClienteResidencial } from '@app/models/backend/clienteresidencial';
+import { ClienteConUsuarioDTO } from '@app/models/backend/clienteresidencial';
 
 @Injectable()
 export class ClienteEffects {
@@ -129,18 +129,6 @@ loadClientesFiltrados$ = createEffect(() =>
     )
   );
 
-  updateClient$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ClienteActions.updateClient),
-      switchMap(action =>
-        this.http.put<ClienteResidencial>(`${environment.url}api/clientes/${action.id}`, action.client).pipe(
-          map(client => ClienteActions.updateClientSuccess({ client })),
-          catchError(error => of(ClienteActions.updateClientFailure({ error })))
-        )
-      )
-    )
-  );
-  
   constructor(
     private actions$: Actions,
     private http: HttpClient

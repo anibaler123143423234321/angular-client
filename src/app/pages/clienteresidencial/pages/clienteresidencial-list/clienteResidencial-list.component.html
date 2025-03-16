@@ -1,36 +1,44 @@
-<section class="users-container" fxLayout="column" fxLayoutAlign="start stretch">
+<section
+  class="users-container"
+  fxLayout="column"
+  fxLayoutAlign="start stretch"
+>
   <!-- Spinner Overlay: se muestra mientras loading sea true -->
-<!-- Modificar el div del spinner para que solo se muestre durante la exportación -->
-<div class="spinner-overlay" *ngIf="exportLoading">
-  <app-spinner></app-spinner>
-</div>
-
- <!-- Header section -->
- <div class="header-section" fxLayout="row" fxLayoutAlign="space-between center">
-  <h1 class="mat-h1" style="margin: 0">Lista de Usuarios</h1>
-  <div fxLayout="row" fxLayoutGap="1rem">
-    <!-- Botón Exportar Excel por Fecha -->
-    <button
-      mat-raised-button
-      color="accent"
-      (click)="downloadExcelByDate()"
-      *ngIf="(user$ | async)?.role === 'ADMIN'"
-    >
-      <mat-icon>date_range</mat-icon>
-      Exportar Excel por Fecha
-    </button>
-    <!-- Botón Exportar Excel Masivo -->
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="downloadAllExcel()"
-      *ngIf="(user$ | async)?.role === 'ADMIN'"
-    >
-      <mat-icon>file_download</mat-icon>
-      Exportar Excel Masivo
-    </button>
+  <!-- Modificar el div del spinner para que solo se muestre durante la exportación -->
+  <div class="spinner-overlay" *ngIf="exportLoading">
+    <app-spinner></app-spinner>
   </div>
-</div>
+
+  <!-- Header section -->
+  <div
+    class="header-section"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <h1 class="mat-h1" style="margin: 0">Lista de Usuarios</h1>
+    <div fxLayout="row" fxLayoutGap="1rem">
+      <!-- Botón Exportar Excel por Fecha -->
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="downloadExcelByDate()"
+        *ngIf="(user$ | async)?.role === 'ADMIN'"
+      >
+        <mat-icon>date_range</mat-icon>
+        Exportar Excel por Fecha
+      </button>
+      <!-- Botón Exportar Excel Masivo -->
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="downloadAllExcel()"
+        *ngIf="(user$ | async)?.role === 'ADMIN'"
+      >
+        <mat-icon>file_download</mat-icon>
+        Exportar Excel Masivo
+      </button>
+    </div>
+  </div>
 
   <!-- Search section -->
   <form
@@ -138,14 +146,17 @@
           <!-- Botón para exportación individual -->
           <!-- Botón Excel en la tabla -->
           <button
-          mat-stroked-button
-          color="accent"
-          (click)="downloadIndividualExcel(cliente.numeroMovil)"
-          *ngIf="(user$ | async)?.role === 'ADMIN' || (user$ | async)?.role === 'BACKOFFICE'"
-        >
-          <mat-icon>file_download</mat-icon>
-          Excel
-        </button>        
+            mat-stroked-button
+            color="accent"
+            (click)="downloadIndividualExcel(cliente.numeroMovil)"
+            *ngIf="
+              (user$ | async)?.role === 'ADMIN' ||
+              (user$ | async)?.role === 'BACKOFFICE'
+            "
+          >
+            <mat-icon>file_download</mat-icon>
+            Excel
+          </button>
         </td>
       </ng-container>
 
@@ -222,151 +233,351 @@
       <h3>Detalles del Cliente</h3>
       <span class="close" (click)="closeModal()">&times;</span>
     </div>
+
     <div class="modal-body">
       <ng-container
         *ngIf="selectedCliente$ | async as clienteDetalle; else loading"
       >
-        <div class="cliente-details">
-          <!-- Sección 1: Información Personal -->
-          <div class="detail-group">
-            <h4>Información Personal</h4>
-            <p><strong>ID:</strong> {{ clienteDetalle.id }}</p>
-            <p>
-              <strong>Nombres y Apellidos:</strong>
-              {{ clienteDetalle.nombresApellidos }}
-            </p>
-            <p><strong>NIF/NIE:</strong> {{ clienteDetalle.nifNie }}</p>
-            <p>
-              <strong>Nacionalidad:</strong> {{ clienteDetalle.nacionalidad }}
-            </p>
-            <p>
-              <strong>Fecha de Nacimiento:</strong>
-              {{ clienteDetalle.fechaNacimiento | date : "dd/MM/yyyy" }}
-            </p>
-          </div>
-
-          <!-- Sección 2: Contacto -->
-          <div class="detail-group">
-            <h4>Contacto</h4>
-            <p>
-              <strong>Correo Electrónico:</strong>
-              {{ clienteDetalle.correoElectronico }}
-            </p>
-            <p>
-              <strong>Móvil de Contacto:</strong>
-              {{ clienteDetalle.movilContacto }}
-            </p>
-            <p>
-              <strong>Fijo Compañía:</strong> {{ clienteDetalle.fijoCompania }}
-            </p>
-          </div>
-
-          <!-- Sección 3: Dirección -->
-          <div class="detail-group">
-            <h4>Dirección</h4>
-            <p><strong>Dirección:</strong> {{ clienteDetalle.direccion }}</p>
-            <p>
-              <strong>Código Postal:</strong> {{ clienteDetalle.codigoPostal }}
-            </p>
-            <p><strong>Provincia:</strong> {{ clienteDetalle.provincia }}</p>
-            <p><strong>Distrito:</strong> {{ clienteDetalle.distrito }}</p>
-          </div>
-
-          <!-- Sección 4: Plan y Servicios -->
-          <div class="detail-group">
-            <h4>Plan y Servicios</h4>
-            <p><strong>Plan Actual:</strong> {{ clienteDetalle.planActual }}</p>
-            <p><strong>Tipo de Plan:</strong> {{ clienteDetalle.tipoPlan }}</p>
-            <p>
-              <strong>Tipo de Fibra:</strong> {{ clienteDetalle.tipoFibra }}
-            </p>
-            <p><strong>ICC:</strong> {{ clienteDetalle.icc }}</p>
-            <p>
-              <strong>Móviles a Portar:</strong>
-              <span
-                *ngIf="
-                  clienteDetalle.movilesAPortar &&
-                    clienteDetalle.movilesAPortar.length > 0;
-                  else noMoviles
-                "
-              >
-                <span
-                  *ngFor="
-                    let movil of clienteDetalle.movilesAPortar;
-                    let i = index
-                  "
+        <!-- Un solo formulario que abarca todos los campos, para lectura y edición -->
+        <form [formGroup]="editForm" (ngSubmit)="onUpdateSubmit()">
+          <div class="cliente-details">
+            <!-- Sección 1: Información Personal -->
+            <div class="detail-group">
+              <h4>Información Personal</h4>
+              <p>
+                <strong>ID:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.id }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
                 >
-                  {{ movil
-                  }}<span *ngIf="i < clienteDetalle.movilesAPortar.length - 1"
-                    >,
-                  </span>
+                  <mat-label>ID</mat-label>
+                  <input matInput formControlName="id" [disabled]="true" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Nombres y Apellidos:</strong>
+                <span *ngIf="!editMode">{{
+                  clienteDetalle.nombresApellidos
+                }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Nombres y Apellidos</mat-label>
+                  <input matInput formControlName="nombresApellidos" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>NIF/NIE:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.nifNie }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>NIF/NIE</mat-label>
+                  <input matInput formControlName="nifNie" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Nacionalidad:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.nacionalidad }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Nacionalidad</mat-label>
+                  <input matInput formControlName="nacionalidad" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Fecha de Nacimiento:</strong>
+                <span *ngIf="!editMode">
+                  {{ clienteDetalle.fechaNacimiento | date : "dd/MM/yyyy" }}
                 </span>
-              </span>
-              <ng-template #noMoviles>No hay móviles a portar</ng-template>
-            </p>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Fecha de Nacimiento</mat-label>
+                  <input
+                    matInput
+                    type="date"
+                    formControlName="fechaNacimiento"
+                  />
+                </mat-form-field>
+              </p>
+            </div>
+
+            <!-- Sección 2: Contacto -->
+            <div class="detail-group">
+              <h4>Contacto</h4>
+              <p>
+                <strong>Correo Electrónico:</strong>
+                <span *ngIf="!editMode">{{
+                  clienteDetalle.correoElectronico
+                }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Correo Electrónico</mat-label>
+                  <input matInput formControlName="correoElectronico" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Móvil de Contacto:</strong>
+                <span *ngIf="!editMode">{{
+                  clienteDetalle.movilContacto
+                }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Móvil de Contacto</mat-label>
+                  <input matInput formControlName="movilContacto" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Fijo Compañía:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.fijoCompania }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Fijo Compañía</mat-label>
+                  <input matInput formControlName="fijoCompania" />
+                </mat-form-field>
+              </p>
+            </div>
+
+            <!-- Sección 3: Dirección -->
+            <div class="detail-group">
+              <h4>Dirección</h4>
+              <p>
+                <strong>Dirección:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.direccion }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Dirección</mat-label>
+                  <input matInput formControlName="direccion" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Código Postal:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.codigoPostal }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Código Postal</mat-label>
+                  <input matInput formControlName="codigoPostal" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Provincia:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.provincia }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Provincia</mat-label>
+                  <input matInput formControlName="provincia" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Distrito:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.distrito }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Distrito</mat-label>
+                  <input matInput formControlName="distrito" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Ciudad:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.ciudad }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Ciudad</mat-label>
+                  <input matInput formControlName="ciudad" />
+                </mat-form-field>
+              </p>
+            </div>
+
+            <!-- Sección 4: Plan y Servicios -->
+            <div class="detail-group">
+              <h4>Plan y Servicios</h4>
+              <p>
+                <strong>Plan Actual:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.planActual }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Plan Actual</mat-label>
+                  <input matInput formControlName="planActual" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Tipo de Plan:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.tipoPlan }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Tipo de Plan</mat-label>
+                  <input matInput formControlName="tipoPlan" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>Tipo de Fibra:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.tipoFibra }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>Tipo de Fibra</mat-label>
+                  <input matInput formControlName="tipoFibra" />
+                </mat-form-field>
+              </p>
+              <p>
+                <strong>ICC:</strong>
+                <span *ngIf="!editMode">{{ clienteDetalle.icc }}</span>
+                <mat-form-field
+                  appearance="outline"
+                  style="width: 100%"
+                  *ngIf="editMode"
+                >
+                  <mat-label>ICC</mat-label>
+                  <input matInput formControlName="icc" />
+                </mat-form-field>
+              </p>
+            </div>
+
+            <!-- Sección 5: Autorizaciones -->
+            <div class="detail-group">
+              <h4>Autorizaciones</h4>
+              <p>
+                <strong>Venta:</strong>
+                <span *ngIf="clienteDetalle.ventaRealizada == null"
+                  >No definido</span
+                >
+                <span *ngIf="clienteDetalle.ventaRealizada != null">
+                  {{ clienteDetalle.ventaRealizada ? "Sí" : "No" }}
+                </span>
+              </p>
+              <p>
+                <strong>Autoriza Seguros:</strong>
+                {{ clienteDetalle.autorizaSeguros ? "Sí" : "No" }}
+              </p>
+              <p>
+                <strong>Autoriza Energías:</strong>
+                {{ clienteDetalle.autorizaEnergias ? "Sí" : "No" }}
+              </p>
+            </div>
+
+            <!-- Sección 6: Información Adicional (Solo Lectura) -->
+            <div class="detail-group">
+              <h4>Información Adicional</h4>
+              <p><strong>Campaña:</strong> {{ clienteDetalle.campania }}</p>
+              <p>
+                <strong>Cuenta Bancaria:</strong>
+                {{ clienteDetalle.cuentaBancaria }}
+              </p>
+              <p>
+                <strong>Permanencia:</strong> {{ clienteDetalle.permanencia }}
+              </p>
+              <p>
+                <strong>Asesor:</strong> {{ clienteDetalle.usuario?.username }}
+              </p>
+              <p><strong>Nombre Asesor:</strong> {{ selectedAdvisorName }}</p>
+              <p>
+                <strong>Fecha de Creación:</strong>
+                {{ clienteDetalle.fechaCreacion | date : "dd/MM/yyyy HH:mm" }}
+              </p>
+            </div>
           </div>
 
-          <!-- Sección 5: Autorizaciones -->
-          <div class="detail-group">
-            <h4>Autorizaciones</h4>
-            <p>
-              <strong>Venta:</strong>
-              <span *ngIf="clienteDetalle.ventaRealizada == null"
-                >No definido</span
-              >
-              <span *ngIf="clienteDetalle.ventaRealizada != null">
-                {{ clienteDetalle.ventaRealizada ? "Sí" : "No" }}
-              </span>
-            </p>
-            <p>
-              <strong>Autoriza Seguros:</strong>
-              {{ clienteDetalle.autorizaSeguros ? "Sí" : "No" }}
-            </p>
-            <p>
-              <strong>Autoriza Energías:</strong>
-              {{ clienteDetalle.autorizaEnergias ? "Sí" : "No" }}
-            </p>
-          </div>
-
-          <!-- Sección 6: Información Adicional -->
-          <div class="detail-group">
-            <h4>Información Adicional</h4>
-            <p><strong>Campaña:</strong> {{ clienteDetalle.campania }}</p>
-            <p>
-              <strong>Cuenta Bancaria:</strong>
-              {{ clienteDetalle.cuentaBancaria }}
-            </p>
-            <p>
-              <strong>Permanencia:</strong> {{ clienteDetalle.permanencia }}
-            </p>
-            <p>
-              <strong>Asesor:</strong>
-              {{ clienteDetalle.usuario?.username }}
-            </p>
-            <p><strong>Nombre Asesor:</strong> {{ selectedAdvisorName }}</p>
-            <p>
-              <strong>Fecha de Creación:</strong>
-              {{ clienteDetalle.fechaCreacion | date : "dd/MM/yyyy HH:mm" }}
-            </p>
-          </div>
-        </div>
-
-        <!-- Botones del modal (dentro del mismo bloque para tener acceso a clienteDetalle) -->
-        <div class="modal-footer">
-          <!-- Botón en el modal -->
-          <button
-            mat-stroked-button
-            color="primary"
-            (click)="downloadIndividualExcel(clienteDetalle.movilContacto)"
-            *ngIf="(user$ | async)?.role === 'ADMIN' || (user$ | async)?.role === 'BACKOFFICE'"
+          <!-- Botones del modal -->
+          <div class="modal-footer">
+            <!-- Si no estamos editando, aparece el botón "Editar" -->
+            <button
+              *ngIf="!editMode && (user$ | async)?.role === 'ADMIN'"
+              mat-stroked-button
+              color="primary"
+              type="button"
+              (click)="enableEdit()"
             >
-            <mat-icon>file_download</mat-icon>
-            Exportar Excel Individual
-          </button>
-          <button mat-stroked-button color="warn" (click)="closeModal()">
-            Cerrar
-          </button>
-        </div>
+              Editar
+            </button>
+            <!-- Si estamos editando, aparecen "Guardar" y "Cancelar" -->
+            <button
+              *ngIf="editMode"
+              mat-stroked-button
+              color="primary"
+              type="submit"
+            >
+              Guardar
+            </button>
+            <button
+              *ngIf="editMode"
+              mat-stroked-button
+              color="warn"
+              type="button"
+              (click)="cancelEdit()"
+            >
+              Cancelar
+            </button>
+
+            <!-- Botón para exportar Excel (solo si no estamos editando) -->
+            <button
+              *ngIf="
+                (user$ | async)?.role === 'ADMIN' ||
+                (user$ | async)?.role === 'BACKOFFICE'
+              "
+              mat-stroked-button
+              color="primary"
+              type="button"
+              (click)="downloadIndividualExcel(clienteDetalle.movilContacto)"
+            >
+              <mat-icon>file_download</mat-icon>
+              Excel
+            </button>
+
+            <!-- Botón para cerrar el modal -->
+            <button
+              mat-stroked-button
+              color="warn"
+              type="button"
+              (click)="closeModal()"
+            >
+              Cerrar
+            </button>
+          </div>
+        </form>
       </ng-container>
       <ng-template #loading>
         <p class="loading-text">Cargando detalles...</p>

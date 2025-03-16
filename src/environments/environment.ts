@@ -15,7 +15,7 @@ export const environment = {
       appId: "1:198825047659:web:247117caa8d461370aa32e"
     }
   },
-  url:'https://apisozarusac.com/BackendJava/'
+  url:'http://localhost:9039/'
 };
 
 /*

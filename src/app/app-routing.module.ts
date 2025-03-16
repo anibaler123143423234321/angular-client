@@ -10,6 +10,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/clienteresidencial/clienteResidencialComponent.module').then(m=>m.ClienteResidencialComponentModule)
       },
       {
+        path: 'coordinador',
+        loadChildren: () => import('./pages/asignarcoordinar/asignarcoordinar.module').then(m=>m.AsignarcoordinarModule)
+      },
+      {
         path: 'auth',
         loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthModule)
       },

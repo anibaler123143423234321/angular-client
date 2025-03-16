@@ -11,5 +11,5 @@ export const environment = {
       appId: "1:198825047659:web:247117caa8d461370aa32e"
     }
   },
-  url:'https://crmseomidas-app-4a44ebc1b8e3.herokuapp.com/'
+  url:'http://localhost:9039/'
 };

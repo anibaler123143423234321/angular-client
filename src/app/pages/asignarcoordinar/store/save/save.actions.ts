@@ -1,22 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { ClienteConUsuarioDTO } from '@app/models/backend/clienteresidencial';
-import { ClienteResidencial } from '@app/models/backend/clienteresidencial';
-
-
-export const updateClient = createAction(
-  '[Cliente] Update Client',
-  props<{ id: number; client: ClienteResidencial }>()
-);
-
-export const updateClientSuccess = createAction(
-  '[Cliente API] Update Client Success',
-  props<{ client: ClienteResidencial }>()
-);
-
-export const updateClientFailure = createAction(
-  '[Cliente API] Update Client Failure',
-  props<{ error: any }>()
-);
 
 export const loadClientes = createAction(
   '[Cliente List] Load Clientes',

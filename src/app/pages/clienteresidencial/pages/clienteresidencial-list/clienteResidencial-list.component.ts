@@ -15,7 +15,7 @@ import * as fromUser from '@app/store/user';
 import { MatDialog } from '@angular/material/dialog';
 import { formatDate } from '@angular/common';
 import { ExportByDateDialogComponent } from './export-by-date-dialog.component';
-import { finalize } from 'rxjs/operators';
+import { filter, skip } from 'rxjs/operators';
 
 interface ClientePageResponse {
   clientes: ClienteConUsuarioDTO[];
@@ -66,6 +66,33 @@ export class ClienteResidencialListComponent implements OnInit {
       select(fromUser.getUser)
     ) as Observable<fromUser.UserResponse>;
 
+    this.editForm = this.fb.group({
+      id: [''],
+      campania: [''],
+      nombresApellidos: [''],
+      nifNie: [''],
+      nacionalidad: [''],
+      fechaNacimiento: [''],
+      genero: [''],
+      correoElectronico: [''],
+      cuentaBancaria: [''],
+      permanencia: [''],
+      direccion: [''],
+      tipoFibra: [''],
+      movilContacto: [''],
+      fijoCompania: [''],
+      planActual: [''],
+      codigoPostal: [''],
+      provincia: [''],
+      distrito: [''],
+      ciudad: [''],
+      tipoPlan: [''],
+      icc: [''],
+      autorizaSeguros: [false],
+      autorizaEnergias: [false],
+      ventaRealizada: [false],
+    });
+    
     this.filterForm = this.fb.group({
       dniAsesor: [''],
       nombreAsesor: [''],
@@ -237,4 +264,90 @@ export class ClienteResidencialListComponent implements OnInit {
       }
     });
   }
+
+
+  // Activa el modo edición y rellena el formulario con los valores actuales
+enableEdit(): void {
+  this.editMode = true;
+  this.selectedCliente$.pipe(take(1)).subscribe((cliente) => {
+    if (cliente) {
+      this.editForm.patchValue({
+        id: cliente.id,
+        campania: cliente.campania,
+        nombresApellidos: cliente.nombresApellidos,
+        nifNie: cliente.nifNie,
+        nacionalidad: cliente.nacionalidad,
+        fechaNacimiento: cliente.fechaNacimiento
+          ? formatDate(cliente.fechaNacimiento, 'yyyy-MM-dd', 'en-US')
+          : '',
+        genero: cliente.genero,
+        correoElectronico: cliente.correoElectronico,
+        cuentaBancaria: cliente.cuentaBancaria,
+        permanencia: cliente.permanencia,
+        direccion: cliente.direccion,
+        tipoFibra: cliente.tipoFibra,
+        movilContacto: cliente.movilContacto,
+        fijoCompania: cliente.fijoCompania,
+        planActual: cliente.planActual,
+        codigoPostal: cliente.codigoPostal,
+        provincia: cliente.provincia,
+        distrito: cliente.distrito,
+        ciudad: cliente.ciudad,
+        tipoPlan: cliente.tipoPlan,
+        icc: cliente.icc,
+        autorizaSeguros: cliente.autorizaSeguros,
+        autorizaEnergias: cliente.autorizaEnergias,
+        ventaRealizada: cliente.ventaRealizada,
+      });
+    }
+  });
+}
+
+// Cancela la edición y vuelve a modo lectura
+cancelEdit(): void {
+  this.editMode = false;
+}
+
+// Al guardar, despacha la acción para actualizar vía PUT
+// Modify your onUpdateSubmit method to use the loading$ observable
+onUpdateSubmit(): void {
+  if (this.editForm.valid) {
+    const updatedClient: ClienteResidencial = this.editForm.value;
+    
+    // Dispatch the update action
+    this.store.dispatch(
+      fromClienteActions.updateClient({
+        id: updatedClient.id,
+        client: updatedClient
+      })
+    );
+    
+    // Use the loading$ observable to detect when the update completes
+    const subscription = this.loading$.pipe(
+      // Skip the initial loading=true state
+      skip(1),
+      // Take the next loading state (should be false when update completes)
+      take(1)
+    ).subscribe(() => {
+      // Update completed
+      this.editMode = false;
+      
+      // Refresh the client details
+      if (updatedClient.movilContacto) {
+        this.store.dispatch(
+          fromClienteActions.loadClienteByMobile({
+            mobile: updatedClient.movilContacto
+          })
+        );
+      }
+      
+      // Refresh the list
+      this.loadClientesPage(this.currentPage, this.pageSize);
+      
+      // Clean up
+      subscription.unsubscribe();
+    });
+  }
+}
+
 }

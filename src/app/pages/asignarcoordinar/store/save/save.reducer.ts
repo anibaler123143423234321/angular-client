@@ -51,29 +51,6 @@ const _clienteReducer = createReducer(
     ...state,
     selectedCliente: null,
     error
-  })),
-  // Add these handlers for update actions
-  on(ClienteActions.updateClient, state => ({
-    ...state,
-    loading: true,
-    error: null
-  })),
-  on(ClienteActions.updateClientSuccess, (state, { client }) => ({
-    ...state,
-    // Update the selected cliente with the updated data
-    selectedCliente: client,
-    // Also update the client in the list if it exists there
-    clientes: state.clientes.map(c => 
-      c.numeroMovil === client.movilContacto 
-        ? { ...c } // If you need to update list properties, add them here
-        : c
-    ),
-    loading: false
-  })),
-  on(ClienteActions.updateClientFailure, (state, { error }) => ({
-    ...state,
-    loading: false,
-    error
   }))
 );
 

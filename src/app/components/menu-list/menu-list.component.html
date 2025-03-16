@@ -23,10 +23,22 @@
         </a>
         <a mat-list-item (click)="closeMenu()" routerLink="auth/registration">
           <mat-icon>how_to_register</mat-icon>
-          <span class="navegacion-list-label">Registrar Masivamente</span>
+          <span class="navegacion-list-label">Registro Masivo</span>
         </a>
+        <a mat-list-item (click)="closeMenu()" routerLink="coordinador/listar">
+          <mat-icon>person_add</mat-icon> <!-- Nuevo ícono -->
+          <span class="navegacion-list-label">Asignar Coordinador a Asesor</span>
+        </a>
+        <a mat-list-item (click)="closeMenu()" routerLink="/">
+          <mat-icon>group</mat-icon>
+          <span class="navegacion-list-label">Listar Coordinadores</span>
+        </a> 
+        <a mat-list-item (click)="closeMenu()" routerLink="/">
+          <mat-icon>group</mat-icon>
+          <span class="navegacion-list-label">Listar Grupo de Asesores</span>
+        </a> 
         <a mat-list-item (click)="closeMenu()" routerLink="auth/listar">
-          <mat-icon>how_to_reg</mat-icon>
+          <mat-icon>group</mat-icon>
           <span class="navegacion-list-label">Listar Usuarios</span>
         </a>
         <a
@@ -35,7 +47,7 @@
           routerLink="clienteresidencial/listar"
         >
           <mat-icon>group</mat-icon>
-          <span class="navegacion-list-label">Listar Clientes de Usuarios</span>
+          <span class="navegacion-list-label">Listar Clientes de Asesores</span>
         </a>
       </ng-container>
 
