@@ -1,0 +1,69 @@
+<div class="asignar-coordinadores">
+    <h2>Listado de Coordinadores con sus asesores</h2>
+  
+    <!-- Indicador de carga -->
+    <div *ngIf="loading$ | async" class="loading">
+      Cargando coordinadores...
+    </div>
+  
+    <!-- Mensaje de error -->
+    <div *ngIf="error$ | async as error" class="error">
+      Error: {{ error }}
+    </div>
+  
+    <!-- Tabla de coordinadores -->
+    <table *ngIf="(coordinadores$ | async) as coordinadores">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Username</th>
+          <th>DNI</th>
+          <th>Email</th>
+          <th>Sede</th>
+          <th>Asesores</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let coordinador of coordinadores">
+          <td>{{ coordinador.id }}</td>
+          <td>{{ coordinador.nombre }}</td>
+          <td>{{ coordinador.apellido }}</td>
+          <td>{{ coordinador.username }}</td>
+          <td>{{ coordinador.dni }}</td>
+          <td>{{ coordinador.email }}</td>
+          <td>{{ coordinador.sede }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let asesor of coordinador.asesores">
+                {{ asesor.nombre }} {{ asesor.apellido }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <button (click)="openModal(coordinador.id)">Asignar asesor</button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+  <!-- Modal para seleccionar asesor -->
+<div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+      <h3>Seleccione un Asesor</h3>
+      <button (click)="closeModal()">Cerrar</button>
+      <!-- Lista de asesores disponibles -->
+      <ul *ngIf="asesoresDisponibles$ | async as asesores">
+        <li *ngFor="let asesor of asesores">
+          {{ asesor.nombre }} {{ asesor.apellido }}
+          <button (click)="onSelectAsesor(asesor.id)">Asignar</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

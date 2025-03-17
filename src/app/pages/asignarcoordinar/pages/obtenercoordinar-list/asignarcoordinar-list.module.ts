@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
-import { clienteReducer } from '../../store/save';
-import { ClienteEffects } from '../../store/save';
+import { coordinadorReducer } from '../../store/save/save.reducer';
+import { CoordinadorEffects } from '../../store/save';
 import { EffectsModule } from '@ngrx/effects';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
@@ -33,8 +33,8 @@ import { AsignarcoordinarListComponent } from './asignarcoordinar-list.component
     NgbPaginationModule,
     MatIconModule,
     AsignarCoordinadorListPageRoutingModule,
-    StoreModule.forFeature('cliente', clienteReducer),
-    EffectsModule.forFeature([ClienteEffects]),
+    StoreModule.forFeature('coordinador', coordinadorReducer),
+    EffectsModule.forFeature([CoordinadorEffects]),
     FormsModule,
     FlexLayoutModule,
     MatFormFieldModule,

@@ -1,136 +1,107 @@
+// coordinador.effects.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as ClienteActions from './save.actions';
-import { mergeMap, map, catchError, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '@src/environments/environment';
-import { ClienteConUsuarioDTO } from '@app/models/backend/clienteresidencial';
+import * as CoordinadorActions from './save.actions';
+import { mergeMap, map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { CoordinadorDTO } from '@app/models/backend/dto/coordinador.dto';
+import { AsesorDTO } from '@app/models/backend/dto/asesor.dto';
 
 @Injectable()
-export class ClienteEffects {
-
-/*   loadClientes$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ClienteActions.loadClientes),
-      mergeMap(action => {
-        // Configurar parámetros de paginación para la petición HTTP
-        const params = new HttpParams()
-          .set('page', action.page.toString())
-          .set('size', action.size.toString());
-
-        // Se espera que el endpoint retorne un objeto con las propiedades:
-        // clientes, currentPage, totalItems y totalPages.
-        return this.http.get<{
-          clientes: ClienteConUsuarioDTO[],
-          currentPage: number,
-          totalItems: number,
-          totalPages: number
-        }>(`${environment.url}api/clientes/con-usuario`, { params }).pipe(
-          tap(response => console.log('Clientes paginados:', response)),
-          map(response =>
-            ClienteActions.loadClientesSuccess({
-              clientes: response.clientes,
-              currentPage: response.currentPage,
-              totalItems: response.totalItems,
-              totalPages: response.totalPages
-            })
-          ),
-          catchError(error => of(ClienteActions.loadClientesFailure({ error })))
-        );
-      })
-    )
-  ); */
-
-  // Efecto para cargar clientes al iniciar, utilizando el endpoint filtrado por CURRENT_DATE
-  loadClientes$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ClienteActions.loadClientes),
-      mergeMap(action => {
-        // Configurar parámetros de paginación
-        const params = new HttpParams()
-          .set('page', action.page.toString())
-          .set('size', action.size.toString());
-          
-        // Se utiliza el endpoint que retorna datos filtrados por la fecha actual
-        return this.http.get<{
-          clientes: ClienteConUsuarioDTO[],
-          currentPage: number,
-          totalItems: number,
-          totalPages: number
-        }>(`${environment.url}api/clientes/con-usuario-filtrados-fecha`, { params }).pipe(
-          tap(response => console.log('Clientes paginados (fecha actual):', response)),
-          map(response =>
-            ClienteActions.loadClientesSuccess({
-              clientes: response.clientes,
-              currentPage: response.currentPage,
-              totalItems: response.totalItems,
-              totalPages: response.totalPages
-            })
-          ),
-          catchError(error => of(ClienteActions.loadClientesFailure({ error })))
-        );
-      })
-    )
-  );
-
-  // Los demás efectos se mantienen (como loadClientesFiltrados y loadClienteByMobile)
-// En cliente.effects.ts
-// En cliente.effects.ts
-loadClientesFiltrados$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(ClienteActions.loadClientesFiltrados),
-    mergeMap(action => {
-      const dniAsesor = action.dniAsesor?.trim() || '';
-      const nombreAsesor = action.nombreAsesor?.trim() || '';
-      const numeroMovil = action.numeroMovil?.trim() || '';
-      // Si se envía fecha, se envía; si no, se manda cadena vacía.
-      const fecha = action.fecha ? action.fecha.toString() : '';
-
-      const params = new HttpParams()
-        .set('page', action.page.toString())
-        .set('size', action.size.toString())
-        .set('dniAsesor', dniAsesor)
-        .set('nombreAsesor', nombreAsesor)
-        .set('numeroMovil', numeroMovil)
-        .set('fecha', fecha);
-
-      // Se llama siempre al endpoint para filtrado manual (/con-usuario-filtrados)
-      return this.http.get<{
-        clientes: ClienteConUsuarioDTO[],
-        currentPage: number,
-        totalItems: number,
-        totalPages: number
-      }>(`${environment.url}api/clientes/con-usuario-filtrados`, { params }).pipe(
-        map(response =>
-          ClienteActions.loadClientesSuccess({
-            clientes: response.clientes,
-            currentPage: response.currentPage,
-            totalItems: response.totalItems,
-            totalPages: response.totalPages
-          })
-        ),
-        catchError(error => of(ClienteActions.loadClientesFailure({ error })))
-      );
-    })
-  )
-);
-
-  loadClienteByMobile$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ClienteActions.loadClienteByMobile),
-      mergeMap(action =>
-        this.http.get<any>(`${environment.url}api/cliente-promocion/movil/${action.mobile}`)
-          .pipe(
-            map(cliente => ClienteActions.loadClienteByMobileSuccess({ cliente })),
-            catchError(error => of(ClienteActions.loadClienteByMobileFailure({ error })))
-          )
-      )
-    )
-  );
-
+export class CoordinadorEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient
   ) {}
+
+  loadCoordinadores$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CoordinadorActions.loadCoordinadores),
+      mergeMap(() =>
+        this.http.get<CoordinadorDTO[]>(`${environment.url}api/coordinadores`).pipe(
+          map(coordinadores =>
+            CoordinadorActions.loadCoordinadoresSuccess({ coordinadores })
+          ),
+          catchError(error =>
+            of(CoordinadorActions.loadCoordinadoresFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  asignarAsesores$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CoordinadorActions.asignarAsesores),
+      mergeMap(action =>
+        this.http.post<CoordinadorDTO>(`${environment.url}api/coordinadores/asignar-asesores`, action.asignacion).pipe(
+          map(coordinador =>
+            CoordinadorActions.asignarAsesoresSuccess({ coordinador })
+          ),
+          catchError(error =>
+            of(CoordinadorActions.asignarAsesoresFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+// Efecto para cargar asesores disponibles
+loadAsesoresDisponibles$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(CoordinadorActions.loadAsesoresDisponibles),
+    mergeMap(() =>
+      this.http.get<AsesorDTO[]>(`${environment.url}api/coordinadores/asesores-disponibles`).pipe(
+        map(asesores =>
+          CoordinadorActions.loadAsesoresDisponiblesSuccess({ asesores })
+        ),
+        catchError(error =>
+          of(CoordinadorActions.loadAsesoresDisponiblesFailure({ error }))
+        )
+      )
+    )
+  )
+);
+
+// Efecto para asignar un asesor individual
+asignarAsesorIndividual$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(CoordinadorActions.asignarAsesorIndividual),
+    mergeMap(action =>
+      this.http.post<CoordinadorDTO>(
+        `${environment.url}api/coordinadores/asignar-asesores`,
+        {
+          coordinadorId: action.coordinadorId,
+          asesorIds: [action.asesorId]  // Enviamos el asesor individual en un array
+        }
+      ).pipe(
+        map(coordinador =>
+          CoordinadorActions.asignarAsesorIndividualSuccess({ coordinador })
+        ),
+        catchError(error =>
+          of(CoordinadorActions.asignarAsesorIndividualFailure({ error }))
+        )
+      )
+    )
+  )
+);
+
+// Efecto para cargar clientes de un asesor
+loadClientesDeAsesor$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(CoordinadorActions.loadClientesDeAsesor),
+    mergeMap(action =>
+      this.http.get<any[]>(`${environment.url}api/asesores/${action.asesorId}/clientes`).pipe(
+        map(clientes =>
+          CoordinadorActions.loadClientesDeAsesorSuccess({ clientes })
+        ),
+        catchError(error =>
+          of(CoordinadorActions.loadClientesDeAsesorFailure({ error }))
+        )
+      )
+    )
+  )
+);
 }

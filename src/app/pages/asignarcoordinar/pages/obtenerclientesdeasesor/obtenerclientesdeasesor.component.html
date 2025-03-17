@@ -1,0 +1,47 @@
+<div class="clientes-container">
+    <h2>Clientes del Asesor</h2>
+    
+    <div *ngIf="loading$ | async" class="loading">
+      <p>Cargando clientes...</p>
+    </div>
+    
+    <div *ngIf="error$ | async as error" class="error">
+      <p>Error al cargar los clientes: {{ error.message }}</p>
+    </div>
+    
+    <ng-container *ngIf="clientes$ | async as clientes">
+      <div *ngIf="clientes.length === 0 && !(loading$ | async) && !(error$ | async)" class="no-clientes">
+        <p>Este asesor no tiene clientes asignados.</p>
+      </div>
+      
+      <div *ngIf="clientes.length > 0" class="clientes-list">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cliente of clientes">
+              <td>{{ cliente.id }}</td>
+              <td>{{ cliente.nombre }}</td>
+              <td>{{ cliente.email }}</td>
+              <td>{{ cliente.telefono }}</td>
+              <td>
+                <button (click)="verDetalleCliente(cliente.id)">Ver detalle</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+    
+    <div class="actions">
+      <button (click)="cargarClientesDeAsesor()">Recargar</button>
+      <button routerLink="/asesores">Volver a Asesores</button>
+    </div>
+  </div>

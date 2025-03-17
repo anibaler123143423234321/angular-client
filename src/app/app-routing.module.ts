@@ -22,12 +22,17 @@ const routes: Routes = [
         loadChildren: () => import('./pages/static/static.module').then(m=>m.StaticModule)
       },
       {
+        path: 'home',
+        loadChildren: () => import('./pages/home/home.module').then(m=>m.HomeModule)
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'static/welcome'
       }
     ]
   },
+  { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
   {
     path: '**',
     pathMatch: 'full',

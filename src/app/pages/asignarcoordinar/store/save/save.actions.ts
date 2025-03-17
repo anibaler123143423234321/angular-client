@@ -1,51 +1,83 @@
+// coordinador.actions.ts
 import { createAction, props } from '@ngrx/store';
-import { ClienteConUsuarioDTO } from '@app/models/backend/clienteresidencial';
+import { CoordinadorDTO } from '@app/models/backend/dto/coordinador.dto'; 
+import { AsignacionAsesorDTO } from '@app/models/backend/dto/asignacion-asesor.dto';
+import { AsesorDTO } from '@app/models/backend/dto/asesor.dto';
 
-export const loadClientes = createAction(
-  '[Cliente List] Load Clientes',
-  props<{ page: number; size: number }>()
+export const loadCoordinadores = createAction(
+  '[Coordinador List] Load Coordinadores'
 );
 
-export const loadClientesSuccess = createAction(
-  '[Cliente API] Load Clientes Success',
-  props<{ 
-    clientes: ClienteConUsuarioDTO[],
-    currentPage: number,
-    totalItems: number,
-    totalPages: number 
-  }>()
+export const loadCoordinadoresSuccess = createAction(
+  '[Coordinador API] Load Coordinadores Success',
+  props<{ coordinadores: CoordinadorDTO[] }>()
 );
 
-export const loadClientesFailure = createAction(
-  '[Cliente API] Load Clientes Failure',
+export const loadCoordinadoresFailure = createAction(
+  '[Coordinador API] Load Coordinadores Failure',
   props<{ error: any }>()
 );
 
-// Las acciones existentes para cargar clientes filtrados y por móvil se mantienen
-// En save.actions.ts
-export const loadClientesFiltrados = createAction(
-  '[Cliente] Load Clientes Filtrados',
-  props<{
-    dniAsesor: string | null;
-    nombreAsesor: string | null;
-    numeroMovil: string | null;
-    fecha: string | null;
-    page: number;    // Agregar
-    size: number;    // Agregar
-  }>()
+export const asignarAsesores = createAction(
+  '[Coordinador Detail] Asignar Asesores',
+  props<{ asignacion: AsignacionAsesorDTO }>()
 );
 
-export const loadClienteByMobile = createAction(
-  '[Cliente Detail] Load Cliente By Mobile',
-  props<{ mobile: string }>()
+export const asignarAsesoresSuccess = createAction(
+  '[Coordinador API] Asignar Asesores Success',
+  props<{ coordinador: CoordinadorDTO }>()
 );
 
-export const loadClienteByMobileSuccess = createAction(
-  '[Cliente API] Load Cliente By Mobile Success',
-  props<{ cliente: any }>() // Ajusta el tipo según corresponda
+export const asignarAsesoresFailure = createAction(
+  '[Coordinador API] Asignar Asesores Failure',
+  props<{ error: any }>()
 );
 
-export const loadClienteByMobileFailure = createAction(
-  '[Cliente API] Load Cliente By Mobile Failure',
+// --- Nuevas acciones para el modal ---
+
+// Cargar asesores disponibles
+export const loadAsesoresDisponibles = createAction(
+  '[Coordinador Modal] Load Asesores Disponibles'
+);
+
+export const loadAsesoresDisponiblesSuccess = createAction(
+  '[Coordinador API] Load Asesores Disponibles Success',
+  props<{ asesores: AsesorDTO[] }>()
+);
+
+export const loadAsesoresDisponiblesFailure = createAction(
+  '[Coordinador API] Load Asesores Disponibles Failure',
+  props<{ error: any }>()
+);
+
+// Asignar un asesor individual a un coordinador
+export const asignarAsesorIndividual = createAction(
+  '[Coordinador Modal] Asignar Asesor Individual',
+  props<{ coordinadorId: number; asesorId: number }>()
+);
+
+export const asignarAsesorIndividualSuccess = createAction(
+  '[Coordinador API] Asignar Asesor Individual Success',
+  props<{ coordinador: CoordinadorDTO }>()
+);
+
+export const asignarAsesorIndividualFailure = createAction(
+  '[Coordinador API] Asignar Asesor Individual Failure',
+  props<{ error: any }>()
+);
+
+// Acciones para obtener clientes de un asesor
+export const loadClientesDeAsesor = createAction(
+  '[Asesor Clientes] Load Clientes De Asesor',
+  props<{ asesorId: number }>()
+);
+
+export const loadClientesDeAsesorSuccess = createAction(
+  '[Asesor API] Load Clientes De Asesor Success',
+  props<{ clientes: any[] }>()
+);
+
+export const loadClientesDeAsesorFailure = createAction(
+  '[Asesor API] Load Clientes De Asesor Failure',
   props<{ error: any }>()
 );

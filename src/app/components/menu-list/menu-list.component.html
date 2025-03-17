@@ -13,10 +13,14 @@
     <ng-container *ngIf="isAuthorized">
       <!-- Si el usuario es ADMIN se muestran todas las rutas -->
       <ng-container *ngIf="isAdmin(); else backofficeMenu">
-        <a mat-list-item (click)="closeMenu()" routerLink="/">
+        <a mat-list-item (click)="closeMenu()" routerLink="home">
           <mat-icon>home</mat-icon>
           <span class="navegacion-list-label">Home</span>
         </a>
+ <!--        <a mat-list-item (click)="closeMenu()" routerLink="/">
+          <mat-icon>person_add</mat-icon>
+          <span class="navegacion-list-label">Nuevo Registro</span>
+        </a> -->
         <a mat-list-item (click)="closeMenu()" routerLink="auth/registrationindividual">
           <mat-icon>how_to_register</mat-icon>
           <span class="navegacion-list-label">Registro Individual</span>
@@ -29,26 +33,26 @@
           <mat-icon>person_add</mat-icon> <!-- Nuevo ícono -->
           <span class="navegacion-list-label">Asignar Coordinador a Asesor</span>
         </a>
-        <a mat-list-item (click)="closeMenu()" routerLink="/">
+<!--         <a mat-list-item (click)="closeMenu()" routerLink="/">
           <mat-icon>group</mat-icon>
           <span class="navegacion-list-label">Listar Coordinadores</span>
-        </a> 
-        <a mat-list-item (click)="closeMenu()" routerLink="/">
+        </a>  -->
+        <a mat-list-item (click)="closeMenu()" routerLink="coordinador/obtenerclientesdeasesor">
           <mat-icon>group</mat-icon>
-          <span class="navegacion-list-label">Listar Grupo de Asesores</span>
+          <span class="navegacion-list-label">Listar Clientes de Asesores</span>
         </a> 
         <a mat-list-item (click)="closeMenu()" routerLink="auth/listar">
           <mat-icon>group</mat-icon>
-          <span class="navegacion-list-label">Listar Usuarios</span>
+          <span class="navegacion-list-label">Listar Clientes general</span>
         </a>
-        <a
+<!--         <a
           mat-list-item
           (click)="closeMenu()"
           routerLink="clienteresidencial/listar"
         >
           <mat-icon>group</mat-icon>
           <span class="navegacion-list-label">Listar Clientes de Asesores</span>
-        </a>
+        </a> -->
       </ng-container>
 
       <!-- Template para BACKOFFICE -->

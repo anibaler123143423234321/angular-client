@@ -78,4 +78,5 @@ export class AppComponent implements OnInit {
   onError(): void {
     this.notification.error("Se encontraron errores en el proceso");
   }
+ 
 }

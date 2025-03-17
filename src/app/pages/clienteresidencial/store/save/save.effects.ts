@@ -7,40 +7,23 @@ import { of } from 'rxjs';
 import { environment } from '@src/environments/environment';
 import { ClienteConUsuarioDTO, ClienteResidencial } from '@app/models/backend/clienteresidencial';
 
+// Interfaz para la respuesta genérica
+interface GenericResponse<T> {
+  rpta: number;  // 1 para éxito, 0 para error
+  msg: string;   // Mensaje de respuesta
+  data: T;       // Datos de respuesta
+}
+
+// Interfaz para la respuesta paginada de clientes
+interface ClientePaginadoResponse {
+  clientes: ClienteConUsuarioDTO[];
+  currentPage: number;
+  totalItems: number;
+  totalPages: number;
+}
+
 @Injectable()
 export class ClienteEffects {
-
-/*   loadClientes$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ClienteActions.loadClientes),
-      mergeMap(action => {
-        // Configurar parámetros de paginación para la petición HTTP
-        const params = new HttpParams()
-          .set('page', action.page.toString())
-          .set('size', action.size.toString());
-
-        // Se espera que el endpoint retorne un objeto con las propiedades:
-        // clientes, currentPage, totalItems y totalPages.
-        return this.http.get<{
-          clientes: ClienteConUsuarioDTO[],
-          currentPage: number,
-          totalItems: number,
-          totalPages: number
-        }>(`${environment.url}api/clientes/con-usuario`, { params }).pipe(
-          tap(response => console.log('Clientes paginados:', response)),
-          map(response =>
-            ClienteActions.loadClientesSuccess({
-              clientes: response.clientes,
-              currentPage: response.currentPage,
-              totalItems: response.totalItems,
-              totalPages: response.totalPages
-            })
-          ),
-          catchError(error => of(ClienteActions.loadClientesFailure({ error })))
-        );
-      })
-    )
-  ); */
 
   // Efecto para cargar clientes al iniciar, utilizando el endpoint filtrado por CURRENT_DATE
   loadClientes$ = createEffect(() =>
@@ -53,89 +36,129 @@ export class ClienteEffects {
           .set('size', action.size.toString());
           
         // Se utiliza el endpoint que retorna datos filtrados por la fecha actual
-        return this.http.get<{
-          clientes: ClienteConUsuarioDTO[],
-          currentPage: number,
-          totalItems: number,
-          totalPages: number
-        }>(`${environment.url}api/clientes/con-usuario-filtrados-fecha`, { params }).pipe(
-          tap(response => console.log('Clientes paginados (fecha actual):', response)),
-          map(response =>
-            ClienteActions.loadClientesSuccess({
-              clientes: response.clientes,
-              currentPage: response.currentPage,
-              totalItems: response.totalItems,
-              totalPages: response.totalPages
-            })
-          ),
-          catchError(error => of(ClienteActions.loadClientesFailure({ error })))
+        return this.http.get<GenericResponse<ClientePaginadoResponse>>(
+          `${environment.url}api/clientes/con-usuario-filtrados-fecha`, 
+          { params }
+        ).pipe(
+          tap(response => {
+            if (response.rpta === 1) {
+              console.log('Clientes paginados (fecha actual):', response.data);
+            } else {
+              console.error('Error al cargar clientes:', response.msg);
+            }
+          }),
+          map(response => {
+            if (response.rpta === 1) {
+              return ClienteActions.loadClientesSuccess({
+                clientes: response.data.clientes,
+                currentPage: response.data.currentPage,
+                totalItems: response.data.totalItems,
+                totalPages: response.data.totalPages
+              });
+            } else {
+              return ClienteActions.loadClientesFailure({ error: response.msg });
+            }
+          }),
+          catchError(error => of(ClienteActions.loadClientesFailure({ error: error.message })))
         );
       })
     )
   );
 
-  // Los demás efectos se mantienen (como loadClientesFiltrados y loadClienteByMobile)
-// En cliente.effects.ts
-// En cliente.effects.ts
-loadClientesFiltrados$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(ClienteActions.loadClientesFiltrados),
-    mergeMap(action => {
-      const dniAsesor = action.dniAsesor?.trim() || '';
-      const nombreAsesor = action.nombreAsesor?.trim() || '';
-      const numeroMovil = action.numeroMovil?.trim() || '';
-      // Si se envía fecha, se envía; si no, se manda cadena vacía.
-      const fecha = action.fecha ? action.fecha.toString() : '';
+  // Efecto para cargar clientes filtrados
+  loadClientesFiltrados$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ClienteActions.loadClientesFiltrados),
+      mergeMap(action => {
+        const dniAsesor = action.dniAsesor?.trim() || '';
+        const nombreAsesor = action.nombreAsesor?.trim() || '';
+        const numeroMovil = action.numeroMovil?.trim() || '';
+        // Si se envía fecha, se envía; si no, se manda cadena vacía.
+        const fecha = action.fecha ? action.fecha.toString() : '';
 
-      const params = new HttpParams()
-        .set('page', action.page.toString())
-        .set('size', action.size.toString())
-        .set('dniAsesor', dniAsesor)
-        .set('nombreAsesor', nombreAsesor)
-        .set('numeroMovil', numeroMovil)
-        .set('fecha', fecha);
+        const params = new HttpParams()
+          .set('page', action.page.toString())
+          .set('size', action.size.toString())
+          .set('dniAsesor', dniAsesor)
+          .set('nombreAsesor', nombreAsesor)
+          .set('numeroMovil', numeroMovil)
+          .set('fecha', fecha);
 
-      // Se llama siempre al endpoint para filtrado manual (/con-usuario-filtrados)
-      return this.http.get<{
-        clientes: ClienteConUsuarioDTO[],
-        currentPage: number,
-        totalItems: number,
-        totalPages: number
-      }>(`${environment.url}api/clientes/con-usuario-filtrados`, { params }).pipe(
-        map(response =>
-          ClienteActions.loadClientesSuccess({
-            clientes: response.clientes,
-            currentPage: response.currentPage,
-            totalItems: response.totalItems,
-            totalPages: response.totalPages
-          })
-        ),
-        catchError(error => of(ClienteActions.loadClientesFailure({ error })))
-      );
-    })
-  )
-);
+        // Se llama siempre al endpoint para filtrado manual (/con-usuario-filtrados)
+        return this.http.get<GenericResponse<ClientePaginadoResponse>>(
+          `${environment.url}api/clientes/con-usuario-filtrados`, 
+          { params }
+        ).pipe(
+          tap(response => {
+            if (response.rpta === 1) {
+              console.log('Clientes filtrados:', response.data);
+            } else {
+              console.error('Error al filtrar clientes:', response.msg);
+            }
+          }),
+          map(response => {
+            if (response.rpta === 1) {
+              return ClienteActions.loadClientesSuccess({
+                clientes: response.data.clientes,
+                currentPage: response.data.currentPage,
+                totalItems: response.data.totalItems,
+                totalPages: response.data.totalPages
+              });
+            } else {
+              return ClienteActions.loadClientesFailure({ error: response.msg });
+            }
+          }),
+          catchError(error => of(ClienteActions.loadClientesFailure({ error: error.message })))
+        );
+      })
+    )
+  );
 
+  // Efecto para cargar cliente por número móvil
   loadClienteByMobile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ClienteActions.loadClienteByMobile),
       mergeMap(action =>
-        this.http.get<any>(`${environment.url}api/cliente-promocion/movil/${action.mobile}`)
-          .pipe(
-            map(cliente => ClienteActions.loadClienteByMobileSuccess({ cliente })),
-            catchError(error => of(ClienteActions.loadClienteByMobileFailure({ error })))
-          )
+        this.http.get<GenericResponse<any>>(
+          `${environment.url}api/cliente-promocion/movil/${action.mobile}`
+        ).pipe(
+          map(response => {
+            if (response.rpta === 1) {
+              return ClienteActions.loadClienteByMobileSuccess({ cliente: response.data });
+            } else {
+              return ClienteActions.loadClienteByMobileFailure({ error: response.msg });
+            }
+          }),
+          catchError(error => of(ClienteActions.loadClienteByMobileFailure({ error: error.message })))
+        )
       )
     )
   );
 
+  // Efecto para actualizar cliente
   updateClient$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ClienteActions.updateClient),
       switchMap(action =>
-        this.http.put<ClienteResidencial>(`${environment.url}api/clientes/${action.id}`, action.client).pipe(
-          map(client => ClienteActions.updateClientSuccess({ client })),
-          catchError(error => of(ClienteActions.updateClientFailure({ error })))
+        this.http.put<GenericResponse<ClienteResidencial>>(
+          `${environment.url}api/clientes/${action.id}`, 
+          action.client
+        ).pipe(
+          tap(response => {
+            if (response.rpta === 1) {
+              console.log('Cliente actualizado:', response.data);
+            } else {
+              console.error('Error al actualizar cliente:', response.msg);
+            }
+          }),
+          map(response => {
+            if (response.rpta === 1) {
+              return ClienteActions.updateClientSuccess({ client: response.data });
+            } else {
+              return ClienteActions.updateClientFailure({ error: response.msg });
+            }
+          }),
+          catchError(error => of(ClienteActions.updateClientFailure({ error: error.message })))
         )
       )
     )

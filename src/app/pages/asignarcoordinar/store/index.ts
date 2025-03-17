@@ -1,5 +1,5 @@
 import * as fromList from './save/save.reducer';
-import { ClienteEffects } from './save';
+import { CoordinadorEffects } from './save';
 import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 import { ClienteConUsuarioDTO ,ClienteResidencial} from '@app/models/backend/clienteresidencial';
 

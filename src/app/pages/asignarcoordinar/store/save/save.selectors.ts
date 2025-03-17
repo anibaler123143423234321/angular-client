@@ -1,35 +1,36 @@
 import { createSelector } from '@ngrx/store';
-import { ClienteState } from './save.reducer';
+import { CoordinadorState } from './save.reducer';
 
-export const getClienteState = (state: any) => state.cliente; // Ajusta según tu estructura
+export const getCoordinadorState = (state: any) => state.coordinador;
 
-export const getPaginatedClientes = createSelector(
-  getClienteState,
-  (state: ClienteState) => ({
-    clientes: state.clientes,  // Asegúrate de que state.clientes sea un array
-    currentPage: state.currentPage,
-    totalItems: state.totalItems,
-    totalPages: state.totalPages
-  })
+export const getAllCoordinadores = createSelector(
+  getCoordinadorState,
+  (state: CoordinadorState) => state.coordinadores
 );
 
-// Otros selectores que ya tienes:
-export const getClientes = createSelector(
-  getClienteState,
-  (state: ClienteState) => state.clientes
+export const getCoordinadorLoading = createSelector(
+  getCoordinadorState,
+  (state: CoordinadorState) => state.loading
 );
 
-export const getLoading = createSelector(
-  getClienteState,
-  (state: ClienteState) => state.loading
+export const getCoordinadorError = createSelector(
+  getCoordinadorState,
+  (state: CoordinadorState) => state.error
 );
 
-export const getError = createSelector(
-  getClienteState,
-  (state: ClienteState) => state.error
+// <-- Nuevo selector para asesores disponibles -->
+export const getAsesoresDisponibles = createSelector(
+  getCoordinadorState,
+  (state: CoordinadorState) => state.asesoresDisponibles
 );
 
-export const getSelectedCliente = createSelector(
-  getClienteState,
-  (state: ClienteState) => state.selectedCliente
+// Selectores para clientes de asesor
+export const getClientesDeAsesor = createSelector(
+  getCoordinadorState,
+  (state: CoordinadorState) => state.clientesDeAsesor
+);
+
+export const getSelectedAsesorId = createSelector(
+  getCoordinadorState,
+  (state: CoordinadorState) => state.selectedAsesorId
 );

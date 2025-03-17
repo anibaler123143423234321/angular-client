@@ -12,6 +12,13 @@ import { UserPageResponse } from './user.models';
 import { GeneralService } from '@app/services/general.service';
 import { Store } from '@ngrx/store';
 
+// Interfaz para la respuesta genérica
+interface GenericResponse<T> {
+  rpta: number;  // 1 para éxito, 0 para error
+  msg: string;   // Mensaje de respuesta
+  data: T;       // Datos de respuesta
+}
+
 type Action = fromActions.All;
 
 @Injectable()
@@ -48,9 +55,21 @@ export class UserEffects {
         }
   
         const url = `${environment.url}api/user/${action.id}`;
-        return this.httpClient.put<UserResponse>(url, action.user).pipe(
-          tap(() => this.notification.success('Usuario actualizado exitosamente')),
-          map((updatedUser) => new fromActions.UpdateUserSuccess(updatedUser)),
+        return this.httpClient.put<GenericResponse<UserResponse>>(url, action.user).pipe(
+          tap((response) => {
+            if (response.rpta === 1) {
+              this.notification.success(response.msg || 'Usuario actualizado exitosamente');
+            } else {
+              this.notification.error(response.msg || 'Error al actualizar usuario');
+            }
+          }),
+          map((response) => {
+            if (response.rpta === 1) {
+              return new fromActions.UpdateUserSuccess(response.data);
+            } else {
+              return new fromActions.UpdateUserError(response.msg);
+            }
+          }),
           catchError((err) => {
             if (this.handleTokenExpiration(err)) {
               return of(new fromActions.InitUnauthorized());
@@ -63,7 +82,7 @@ export class UserEffects {
     )
   );
 
-  // Efecto para eliminar usuario (hard delete)
+  // Efecto para eliminar usuario (soft delete)
   deleteUser$: Observable<Action> = createEffect(() =>
     this.actions.pipe(
       ofType(fromActions.Types.DELETE_USER),
@@ -75,9 +94,21 @@ export class UserEffects {
         }
   
         const url = `${environment.url}api/user/soft/${action.id}`;
-        return this.httpClient.delete(url, { responseType: 'text' }).pipe(
-          tap(() => this.notification.success('Usuario eliminado exitosamente')),
-          map(() => new fromActions.DeleteUserSuccess(action.id)),
+        return this.httpClient.delete<GenericResponse<string>>(url).pipe(
+          tap((response) => {
+            if (response.rpta === 1) {
+              this.notification.success(response.msg || 'Usuario eliminado exitosamente');
+            } else {
+              this.notification.error(response.msg || 'Error al eliminar usuario');
+            }
+          }),
+          map((response) => {
+            if (response.rpta === 1) {
+              return new fromActions.DeleteUserSuccess(action.id);
+            } else {
+              return new fromActions.DeleteUserError(response.msg);
+            }
+          }),
           catchError((err) => {
             if (this.handleTokenExpiration(err)) {
               return of(new fromActions.InitUnauthorized());
@@ -89,34 +120,52 @@ export class UserEffects {
       })
     )
   );
-  
+
+ // Efecto para listar usuarios paginados
+// Efecto para listar usuarios paginados
+loadUsersPage: Observable<Action> = createEffect(() =>
+  this.actions.pipe(
+    ofType(fromActions.Types.LOAD_USERS_PAGE),
+    switchMap((action: fromActions.LoadUsersPage) => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        this.router.navigate(['/auth/login']);
+        return of(new fromActions.LoadUsersPageError('No hay sesión activa'));
+      }
+
+      const url = `${environment.url}api/user/listar?page=${action.page}&size=${action.size}`;
+      return this.httpClient.get(url, { responseType: 'text' }).pipe(
+        tap((responseText: string) =>
+          console.log('Respuesta del servidor:', responseText)
+        ),
+        map((responseText: string) => {
+          let response: GenericResponse<UserPageResponse>;
+          try {
+            response = JSON.parse(responseText);
+          } catch (e) {
+            this.notification.error('Error al parsear la respuesta del servidor.');
+            throw new Error('Error al parsear la respuesta del servidor.');
+          }
+          if (response.rpta === 1) {
+            return new fromActions.LoadUsersPageSuccess(response.data);
+          } else {
+            this.notification.error(response.msg || 'Error al cargar usuarios');
+            return new fromActions.LoadUsersPageError(response.msg);
+          }
+        }),
+        catchError((err) => {
+          if (this.handleTokenExpiration(err)) {
+            return of(new fromActions.InitUnauthorized());
+          }
+          this.notification.error('Error al cargar usuarios');
+          return of(new fromActions.LoadUsersPageError(err.message));
+        })
+      );
+    })
+  )
+);
 
 
-  // Efecto para listar usuarios paginados
-  loadUsersPage: Observable<Action> = createEffect(() =>
-    this.actions.pipe(
-      ofType(fromActions.Types.LOAD_USERS_PAGE),
-      switchMap((action: fromActions.LoadUsersPage) => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          this.router.navigate(['/auth/login']);
-          return of(new fromActions.LoadUsersPageError('No hay sesión activa'));
-        }
-  
-        const url = `${environment.url}api/user/listar?page=${action.page}&size=${action.size}`;
-        return this.httpClient.get<UserPageResponse>(url).pipe(
-          map((response) => new fromActions.LoadUsersPageSuccess(response)),
-          catchError((err) => {
-            if (this.handleTokenExpiration(err)) {
-              return of(new fromActions.InitUnauthorized());
-            }
-            this.notification.error('Error al cargar usuarios');
-            return of(new fromActions.LoadUsersPageError(err.message));
-          })
-        );
-      })
-    )
-  );
 
   // Efecto para buscar usuarios (búsqueda genérica)
   searchUsers$: Observable<Action> = createEffect(() =>
@@ -130,8 +179,15 @@ export class UserEffects {
         }
   
         const url = `${environment.url}api/user/buscar?query=${action.query}&page=${action.page}&size=${action.size}`;
-        return this.httpClient.get<UserPageResponse>(url).pipe(
-          map((response: UserPageResponse) => new fromActions.SearchUsersSuccess(response)),
+        return this.httpClient.get<GenericResponse<UserPageResponse>>(url).pipe(
+          map((response) => {
+            if (response.rpta === 1) {
+              return new fromActions.SearchUsersSuccess(response.data);
+            } else {
+              this.notification.error(response.msg || 'Error al buscar usuarios');
+              return new fromActions.SearchUsersError(response.msg);
+            }
+          }),
           catchError((err) => {
             if (this.handleTokenExpiration(err)) {
               return of(new fromActions.InitUnauthorized());
@@ -148,36 +204,53 @@ export class UserEffects {
   signInEmail: Observable<Action> = createEffect(() =>
     this.actions.pipe(
       ofType(fromActions.Types.SIGIN_IN_EMAIL),
-      // Aquí se extrae el objeto de credenciales que ahora contendrá username y password
       map((action: fromActions.SignInEmail) => action.credentials),
       switchMap((credentials) =>
         this.httpClient
-          .post<UserResponse>(
+          .post<GenericResponse<UserResponse>>(
             `${environment.url}api/authentication/sign-in`,
             credentials
           )
           .pipe(
-            tap((response: UserResponse) => {
-              localStorage.setItem('token', response.token);
-              const userRole = response.role
-                ? response.role.trim().toUpperCase()
-                : '';
-              if (userRole === 'BACKOFFICE') {
-                // Si es backoffice, redirige a listar
-                this.router.navigate(['/clienteresidencial/listar']);
+            tap((response) => {
+              if (response.rpta === 1) {
+                localStorage.setItem('token', response.data.token);
+                const userRole = response.data.role
+                  ? response.data.role.trim().toUpperCase()
+                  : '';
+                
+                // Manejo de redirección según el rol
+                switch (userRole) {
+                  case 'BACKOFFICE':
+                    this.router.navigate(['/clienteresidencial/listar']);
+                    break;
+                  case 'COORDINADOR':
+                    this.router.navigate(['/clienteresidencial/listar']);
+                    break;
+                  case 'ASESOR':
+                    this.router.navigate(['/']);
+                    break;
+                  case 'ADMIN':
+                    this.router.navigate(['/home']);
+                    break;
+                  default:
+                    this.router.navigate(['/']);
+                    break;
+                }
               } else {
-                // Para ADMIN u otros roles, redirige a la ruta por defecto
-                this.router.navigate(['/']);
+                this.notification.error(response.msg || 'Credenciales incorrectas');
               }
             }),
-            // Se actualiza para utilizar response.username en lugar de response.email
-            map(
-              (response: UserResponse) =>
-                new fromActions.SignInEmailSuccess(
-                  response.username,
-                  response || null
-                )
-            ),
+            map((response) => {
+              if (response.rpta === 1) {
+                return new fromActions.SignInEmailSuccess(
+                  response.data.username,
+                  response.data || null
+                );
+              } else {
+                return new fromActions.SignInEmailError(response.msg);
+              }
+            }),
             catchError((err) => {
               this.notification.error('Credenciales incorrectas');
               return of(new fromActions.SignInEmailError(err.message));
@@ -197,89 +270,122 @@ export class UserEffects {
           return of(new fromActions.RegisterUserError('No hay sesión activa'));
         }
   
-        return this.httpClient.post<UserResponse>(`${environment.url}api/user/registrar`, action.user)
-          .pipe(
-            tap(() => {
-              this.notification.success('Usuario registrado exitosamente.');
+        return this.httpClient.post<GenericResponse<UserResponse>>(
+          `${environment.url}api/user/registrar`, 
+          action.user
+        ).pipe(
+          tap((response) => {
+            if (response.rpta === 1) {
+              this.notification.success(response.msg || 'Usuario registrado exitosamente.');
               this.store.dispatch(new fromActions.Init());
+            } else {
+              this.notification.error(response.msg || 'Error al registrar el usuario.');
+            }
+          }),
+          map((response) => {
+            if (response.rpta === 1) {
+              return new fromActions.RegisterUserSuccess(response.data);
+            } else {
+              return new fromActions.RegisterUserError(response.msg);
+            }
+          }),
+          catchError((err) => {
+            if (this.handleTokenExpiration(err)) {
+              return of(new fromActions.InitUnauthorized());
+            }
+            this.notification.error('Error al registrar el usuario.');
+            return of(new fromActions.RegisterUserError(err.message));
+          })
+        );
+      })
+    )
+  );
+
+  // Efecto para inicializar usuario (Init)
+  init: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(fromActions.Types.INIT),
+      switchMap(async () => localStorage.getItem('token')),
+      switchMap((token) => {
+        if (token) {
+          return this.httpClient.get<GenericResponse<UserResponse>>(
+            `${environment.url}api/user`
+          ).pipe(
+            tap((response) => {
+              if (response.rpta === 1) {
+                localStorage.setItem('user', JSON.stringify(response.data));
+                this.GeneralService.usuario$ = response.data;
+              }
             }),
-            map((user: UserResponse) => new fromActions.RegisterUserSuccess(user)),
+            map((response) => {
+              if (response.rpta === 1) {
+                return new fromActions.InitAuthorized(response.data.username, response.data || null);
+              } else {
+                localStorage.clear();
+                return new fromActions.InitUnauthorized();
+              }
+            }),
+            catchError((err) => {
+              if (err.error?.error === 'TOKEN_EXPIRADO' || err.status === 401) {
+                localStorage.clear();
+                this.router.navigate(['/auth/login']);
+                this.notification.error('Su sesión ha expirado. Por favor, inicie sesión nuevamente.');
+              }
+              return of(new fromActions.InitUnauthorized());
+            })
+          );
+        } else {
+          return of(new fromActions.InitUnauthorized());
+        }
+      })
+    )
+  );
+
+  // Efecto para carga masiva de ASESOR
+  cargaMasivaAsesor$: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(fromActions.Types.CARGA_MASIVA_ASESOR),
+      switchMap((action: fromActions.CargaMasivaAsesor) => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          this.router.navigate(['/auth/login']);
+          return of(new fromActions.CargaMasivaAsesorError('No hay sesión activa'));
+        }
+
+        const formData = new FormData();
+        formData.append('file', action.file);
+
+        return this.httpClient
+          .post<GenericResponse<string>>(
+            `${environment.url}api/user/crear-masivo`, 
+            formData
+          )
+          .pipe(
+            tap((response) => {
+              if (response.rpta === 1) {
+                this.notification.success(response.msg || 'Usuarios ASESOR creados exitosamente');
+              } else {
+                this.notification.error(response.msg || 'Error al subir archivo para usuarios ASESOR');
+              }
+            }),
+            map((response) => {
+              if (response.rpta === 1) {
+                return new fromActions.CargaMasivaAsesorSuccess(response.data);
+              } else {
+                return new fromActions.CargaMasivaAsesorError(response.msg);
+              }
+            }),
             catchError((err) => {
               if (this.handleTokenExpiration(err)) {
                 return of(new fromActions.InitUnauthorized());
               }
-              this.notification.error('Error al registrar el usuario.');
-              return of(new fromActions.RegisterUserError(err.message));
+              this.notification.error('Error al subir archivo para usuarios ASESOR');
+              return of(new fromActions.CargaMasivaAsesorError(err.message));
             })
           );
       })
     )
   );
-
- // Efecto para inicializar usuario (Init)
- init: Observable<Action> = createEffect(() =>
-  this.actions.pipe(
-    ofType(fromActions.Types.INIT),
-    switchMap(async () => localStorage.getItem('token')),
-    switchMap((token) => {
-      if (token) {
-        return this.httpClient.get<UserResponse>(`${environment.url}api/user`).pipe(
-          tap((user: UserResponse) => {
-            localStorage.setItem('user', JSON.stringify(user));
-            this.GeneralService.usuario$ = user;
-          }),
-          map((user: UserResponse) =>
-            new fromActions.InitAuthorized(user.username, user || null)
-          ),
-          catchError((err) => {
-            if (err.error?.error === 'TOKEN_EXPIRADO' || err.status === 401) {
-              localStorage.clear();
-              this.router.navigate(['/auth/login']);
-              this.notification.error('Su sesión ha expirado. Por favor, inicie sesión nuevamente.');
-            }
-            return of(new fromActions.InitUnauthorized());
-          })
-        );
-      } else {
-        return of(new fromActions.InitUnauthorized());
-      }
-    })
-  )
-);
-
-
-// Efecto para carga masiva de ASESOR
-cargaMasivaAsesor$: Observable<Action> = createEffect(() =>
-  this.actions.pipe(
-    ofType(fromActions.Types.CARGA_MASIVA_ASESOR),
-    switchMap((action: fromActions.CargaMasivaAsesor) => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        this.router.navigate(['/auth/login']);
-        return of(new fromActions.CargaMasivaAsesorError('No hay sesión activa'));
-      }
-
-      const formData = new FormData();
-      formData.append('file', action.file);
-
-      return this.httpClient
-        .post(`${environment.url}api/user/crear-masivo`, formData, {
-          responseType: 'text',
-        })
-        .pipe(
-          tap(() => this.notification.success('Usuarios ASESOR creados exitosamente')),
-          map((response) => new fromActions.CargaMasivaAsesorSuccess(response)),
-          catchError((err) => {
-            if (this.handleTokenExpiration(err)) {
-              return of(new fromActions.InitUnauthorized());
-            }
-            this.notification.error('Error al subir archivo para usuarios ASESOR');
-            return of(new fromActions.CargaMasivaAsesorError(err.message));
-          })
-        );
-    })
-  )
-);
 
 // Efecto para carga masiva de BACKOFFICE
 cargaMasivaBackoffice$: Observable<Action> = createEffect(() =>
@@ -296,12 +402,25 @@ cargaMasivaBackoffice$: Observable<Action> = createEffect(() =>
       formData.append('file', action.file);
 
       return this.httpClient
-        .post(`${environment.url}api/user/crear-masivo-backoffice`, formData, {
-          responseType: 'text',
-        })
+        .post<GenericResponse<string>>(
+          `${environment.url}api/user/crear-masivo-backoffice`, 
+          formData
+        )
         .pipe(
-          tap(() => this.notification.success('Usuarios BACKOFFICE creados exitosamente')),
-          map((response) => new fromActions.CargaMasivaBackOfficeSuccess(response)),
+          tap((response) => {
+            if (response.rpta === 1) {
+              this.notification.success(response.msg || 'Usuarios BACKOFFICE creados exitosamente');
+            } else {
+              this.notification.error(response.msg || 'Error al subir archivo para usuarios BACKOFFICE');
+            }
+          }),
+          map((response) => {
+            if (response.rpta === 1) {
+              return new fromActions.CargaMasivaBackOfficeSuccess(response.data);
+            } else {
+              return new fromActions.CargaMasivaBackOfficeError(response.msg);
+            }
+          }),
           catchError((err) => {
             if (this.handleTokenExpiration(err)) {
               return of(new fromActions.InitUnauthorized());
@@ -313,7 +432,6 @@ cargaMasivaBackoffice$: Observable<Action> = createEffect(() =>
     })
   )
 );
-
 
   // Efecto para cambiar el rol de un usuario
   changeUserRole$: Observable<Action> = createEffect(() =>
@@ -327,9 +445,21 @@ cargaMasivaBackoffice$: Observable<Action> = createEffect(() =>
         }
   
         const url = `${environment.url}api/user/change/${action.role}/${action.userId}`;
-        return this.httpClient.put(url, null, { responseType: 'text' }).pipe(
-          tap(() => this.notification.success('Rol actualizado correctamente')),
-          map(() => new fromActions.ChangeUserRoleSuccess(action.userId, action.role)),
+        return this.httpClient.put<GenericResponse<string>>(url, null).pipe(
+          tap((response) => {
+            if (response.rpta === 1) {
+              this.notification.success(response.msg || 'Rol actualizado correctamente');
+            } else {
+              this.notification.error(response.msg || 'Error al actualizar el rol');
+            }
+          }),
+          map((response) => {
+            if (response.rpta === 1) {
+              return new fromActions.ChangeUserRoleSuccess(action.userId, action.role);
+            } else {
+              return new fromActions.ChangeUserRoleError(response.msg);
+            }
+          }),
           catchError((err) => {
             if (this.handleTokenExpiration(err)) {
               return of(new fromActions.InitUnauthorized());
@@ -341,6 +471,4 @@ cargaMasivaBackoffice$: Observable<Action> = createEffect(() =>
       })
     )
   );
-  
-
 }

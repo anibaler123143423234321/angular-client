@@ -37,7 +37,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth-interceptor';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-
+ 
 const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [];
 
 @NgModule({
@@ -45,7 +45,7 @@ const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({
     AppComponent,
     MenuListComponent,
     HeaderComponent,
-  ],
+   ],
   imports: [
     FlexLayoutModule,
     BrowserModule,

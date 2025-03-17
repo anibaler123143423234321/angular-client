@@ -1,0 +1,304 @@
+.form-section {
+    max-width: 80%;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.div-contenedor-home {
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contenedor-imagen-home {
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contenedor-imagen-home img {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 1.9rem;
+}
+.texto-imagen{
+    position: absolute;
+    top: 25%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: 500;
+}
+.contenedor-modulos-crm-home{
+    max-width: 100%;
+    width: 100%;
+    background-color: white;
+    position: relative;
+    border-radius: 1.9rem;
+    margin-top: -4rem;
+    padding: 1rem;
+    min-height: 20rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.item-modulo-crm-home{
+    max-width: 30%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+ 
+    cursor: pointer;
+}
+.icono-item-modulo-home{
+     padding: 1.5rem;
+     border-radius: 50%;
+     background-color: #fff;
+     position: relative;
+     z-index: 1;
+}
+.nombre-item-modulo-home{
+    text-align: center;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 400;
+    padding: 1.2rem;
+    border-radius: 0.7rem;
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+    margin-left: -1rem;
+}
+.icono-1-home{
+    border: 0.7rem solid #82D23C;
+
+}
+.nombre-1-home{
+    background-color: #82D23C;
+}
+.icono-2-home{
+    border: 0.7rem solid #2E74BB;
+
+}
+.nombre-2-home{
+    background-color: #2E74BB;
+}
+.icono-3-home{
+    border: 0.7rem solid #13467A;
+
+}
+.nombre-3-home{
+    background-color: #13467A;
+}
+
+/*-----------------------MODAL-----------------*/
+/* Estilos para el Modal de Envío de SMS */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-open {
+    display: flex;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    border-radius: 0.3125rem;
+    width: 35rem; 
+    max-width: 90%;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9375rem 1.25rem;
+    border-bottom: 0.0625rem solid #e0e0e0;
+  }
+  
+  .modal-title {
+    margin: 0;
+    font-size: 1.125rem; /* 18px */
+    color: #333;
+    font-weight: 400;
+  }
+  
+  .close {
+    font-size: 1.25rem; /* 20px */
+    font-weight: bold;
+    color: #777;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  
+  .close:hover {
+    color: #333;
+  }
+  
+  .modal-body {
+    padding: 1.25rem; /* 20px */
+  }
+  
+  .form-group {
+    margin-bottom: 0.9375rem; /* 15px */
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-group label {
+    font-size: 0.875rem; /* 14px */
+    margin-right: 0.625rem; /* 10px */
+    text-align: right;
+    width: 9.375rem; /* 150px */
+    color: #333;
+    white-space: nowrap;
+  }
+  
+  .form-control {
+    flex: 1;
+    padding: 0.5rem 0.75rem; /* 8px 12px */
+    font-size: 0.875rem; /* 14px */
+    border: 0.0625rem solid #ddd; /* 1px */
+    border-radius: 0.25rem; /* 4px */
+    box-sizing: border-box;
+  }
+  
+  .select-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+  
+  .select-container {
+    position: relative;
+    flex: 1;
+  }
+  
+  .select-container select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    padding-right: 1.875rem; /* 30px */
+    cursor: pointer;
+  }
+  
+  .select-arrow {
+    position: absolute;
+    right: 0.625rem; /* 10px */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #666;
+  }
+  
+  .btn-plantilla {
+    margin-left: 0.625rem; /* 10px */
+    background-color: #82D23C;
+    color: white;
+    border: none;
+    border-radius: 0.25rem; /* 4px */
+    padding: 0.3125rem 0.625rem; /* 5px 10px */
+    font-size: 0.75rem; /* 12px */
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .textarea-mensaje {
+    resize: none;
+    min-height: 6.25rem; /* 100px */
+  }
+  
+  .modal-footer {
+    padding: 0.9375rem 1.25rem; /* 15px 20px */
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.625rem; /* 10px */
+    border-top: 0.0625rem solid #e0e0e0; /* 1px */
+  }
+  
+  .btn-cerrar {
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 0.25rem; /* 4px */
+    padding: 0.5rem 0.9375rem; /* 8px 15px */
+    cursor: pointer;
+  }
+  
+  .btn-enviar {
+    background-color: #2E74BB;
+    color: white;
+    border: none;
+    border-radius: 0.25rem; /* 4px */
+    padding: 0.5rem 0.9375rem; /* 8px 15px */
+    cursor: pointer;
+  }
+  
+  /* Más exacto a la imagen */
+  .form-group {
+    margin-bottom: 1.25rem; /* 20px para más espaciado como en la imagen */
+  }
+  
+  .form-control, .select-container select {
+    height: 2.25rem; /* 36px para coincidir con la imagen */
+  }
+  
+  .textarea-mensaje {
+    height: 5.25rem; /* 84px como en la imagen */
+  }
+  
+  /* Para dispositivos móviles */
+  @media (max-width: 36rem) { /* 576px */
+    .modal-content {
+      width: 95%;
+    }
+    
+    .form-group {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .form-group label {
+      text-align: left;
+      width: 100%;
+      margin-bottom: 0.3125rem; /* 5px */
+      margin-right: 0;
+    }
+    
+    .select-wrapper {
+      width: 100%;
+    }
+  }
